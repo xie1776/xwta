@@ -132,7 +132,7 @@ return array(
     ],
 
     'REDIS' => [
-        'server' => '127.0.0.1',
+        'server' => '192.168.33.10',
         'port' => 6379,
     ],
 

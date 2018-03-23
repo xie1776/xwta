@@ -104,12 +104,8 @@ class ChatserverAction extends BaseAction
     }
 
     public function addUserFile($username,$k){
-
-       	$config = C('REDIS');
-		$redis = new Redis();
-		$redis->connect($config['server'], $config['port']);
-
-        $redis->hSet(self::REDIS_KEY,$k,$usernameByFile);
+    	$this->redisConnect();
+        $this->redis->hSet(self::REDIS_KEY,$k,$username);
         // $users = json_decode(File::read($userFile),true);
         // $users[$k] = $username;
         // File::save($userFile,$users,'w');
@@ -130,12 +126,14 @@ class ChatserverAction extends BaseAction
 
     //退出
     public function quit($event){
-        $this->websocket->log('客户退出id:'.$event['k']);
+    	$this->redisConnect();
+    	$username = $this->redis->hGet(self::REDIS_KEY, $event['k']);
+        $this->websocket->log($username."退出.id:".$event['k']);
 
         //通知所有服务器
         $userList = array(
             'status' => 5,
-            'users' => $this->getUsers($websocket,$event['k']), //不包含即将退出的用户
+            'users' => $this->getUsers($event['k']), //不包含即将退出的用户
             'info' => $this->usernameByFile($event['k']).'('.$event['k'].')离开了',
             );
         $this->sendUsers($userList);
@@ -162,7 +160,7 @@ class ChatserverAction extends BaseAction
             }
             // File::save('Data/userLogin.txt', serialize($list).'-'.$val['username']."\r\n");
             $this->redisConnect();
-            $this->redis->set(self::REDIS_User_KEY, serialize($list));
+            $this->redis->lpush(self::REDIS_User_KEY, serialize($list).'-'.$val['username']);
             $this->websocket->write($val['socket'],json_encode($list));
             unset($key,$val,$list);
         }
