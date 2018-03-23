@@ -2,13 +2,15 @@
 	
 	//ob_start();
 	
-	//判断执行方式
+	/**
+	 * php cli执行
+	 * php index.php -c 控制器(Index) -a 方法名(index)
+	 */
 	if (php_sapi_name()=='cli') {
 		$param = getopt('c:a:');
 		$controller = $param['c'];
 		$action = $param['a'];
 		$_GET['s'] = $controller.'/'.$action;
-		// echo $controller.'-'.$action;die;
 	}
 
 	ini_set('date.timezone', 'Asia/Shanghai');
