@@ -2,9 +2,9 @@
 
     if(PRODUCT != 1){ //测试环境
         $passwd = 'root';
-        $trace_show = true;
-        $error_msg = true;
-        $trace_exce = true;
+        $trace_show = false;
+        $error_msg = false;
+        $trace_exce = false;
         $token_on = false;
         $asset_path = 'D:/360/';
     }else{ //线上
@@ -18,7 +18,7 @@
 
 return array(
     /* 数据库设置 */
-    'DB_DSN'=>'mysql://root:'.$passwd.'@127.0.0.1:3306/xwta',
+    'DB_DSN'=>'mysql://root:'.$passwd.'@127.0.0.1/xwta',
 
     /*
     //改用线上数据
@@ -124,6 +124,11 @@ return array(
     'ASSET' => [
         'path' => $asset_path,
         'domain' => 'http://asset.xwta.net/',
+    ],
+
+    'CHAT' => [
+        'server' => '192.168.33.10',
+        'port' => '8032',
     ],
 
 );

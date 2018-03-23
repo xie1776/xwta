@@ -53,6 +53,17 @@
     		echo '结果长度：'.count($len_arr);
 	    }
 
+	    /**
+	     * cli测试
+	     * @Author xiezhibin  <xiezhibin@yuanxin-inc.com>
+	     * @Date   2018-03-23
+	     * @return [type]     [description]
+	     */
+	    public function dwto()
+	    {
+	    	echo '这是cli执行的结果';
+	    	echo "\n";
+	    }
 
 	}
 ?>
