@@ -10,6 +10,12 @@ class ChatserverAction extends BaseAction
 	public $redis = null;
 	const REDIS_KEY = 'chat_set';
 	const REDIS_User_KEY = 'chat_user_string';
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->redisConnect();
+	}
 	/**
 	 * 后台进程及websocket入口
 	 * @Author xiezhibin  <xiezhibin@yuanxin-inc.com>
@@ -38,7 +44,7 @@ class ChatserverAction extends BaseAction
 	{
 		$this->websocket = $obj;
 		if($type == 'in'){ //用户连接
-            $this->access($event);
+            // $this->access($event);
         }elseif($type=='out'){ //用户退出
             $this->quit($event);
         }elseif($type=='msg'){
@@ -49,18 +55,21 @@ class ChatserverAction extends BaseAction
                 $username = substr($event['msg'], 8);
                 $this->updataUsers($event,$username);
                 $this->addUserFile($username,$event['k']); //添加用户到文件
+
+                $this->access($event); //通知控制台
                 $userList['users'] = $this->getUsers();
                 $userList['info'] = $this->getUserName($event['sign']).'('.$event['k'].')来了';
                 //向所有用户发送当前的用户列表
                 $this->sendUsers($userList);
 
-                //想当前用户发送消息
+                //向当前用户发送消息
                 $cur_ev = array(
                     'status' => 6,
                     'info' => $this->getUserName($event['sign']).'('.$event['k'].')',
                     );
                 $this->websocket->write($event['sign'],json_encode($cur_ev));
             }
+            
             /*
             else if($event['msg']=='me_quit'){ //有用户退出 更新所有客户端
                 $userList['users'] = getUsers($websocket,$event['k']); //不包含即将退出的用户
@@ -70,9 +79,8 @@ class ChatserverAction extends BaseAction
             else{
                 //用户发送是json消息
                 $accapt = json_decode($event['msg'],true);
-
-                $this->websocket->log($event['k'].'消息:'.$accapt['msg']); //print消息在cmd显示
                 $username = $this->usernameByFile($event['k']);
+                $this->websocket->log($username.'说:'.$accapt['msg']); //print消息在cmd显示
                 // File::save($msgFile,$username.'说:'.$accapt['msg']); //记录文件
                 $data = array(
                     'status' => 1,
@@ -99,12 +107,12 @@ class ChatserverAction extends BaseAction
 	}
 
 	public function access($event){
+		$username = $this->usernameByFile($event['k']);
         //把所有用户ID发送到前台
-        $this->websocket->log('客户进入id:'.$event['k']);
+        $this->websocket->log("[$username]进入(id:".$event['k'].')');
     }
 
     public function addUserFile($username,$k){
-    	$this->redisConnect();
         $this->redis->hSet(self::REDIS_KEY,$k,$username);
         // $users = json_decode(File::read($userFile),true);
         // $users[$k] = $username;
@@ -112,8 +120,8 @@ class ChatserverAction extends BaseAction
     }
     
     //获取所有用户
-    public function getUsers($id=false){
-        
+    public function getUsers($id=false)
+    {
         $users = array();
         foreach ($this->websocket->users as $key => $val) {
             $l_id = $this->websocket->search($val['socket']);
@@ -126,9 +134,8 @@ class ChatserverAction extends BaseAction
 
     //退出
     public function quit($event){
-    	$this->redisConnect();
-    	$username = $this->redis->hGet(self::REDIS_KEY, $event['k']);
-        $this->websocket->log($username."退出.id:".$event['k']);
+    	$username = $this->usernameByFile($event['k']);
+        $this->websocket->log('['.$username."]退出(id:".$event['k'].')');
 
         //通知所有服务器
         $userList = array(
@@ -159,7 +166,6 @@ class ChatserverAction extends BaseAction
                 unset($k,$v);
             }
             // File::save('Data/userLogin.txt', serialize($list).'-'.$val['username']."\r\n");
-            $this->redisConnect();
             $this->redis->lpush(self::REDIS_User_KEY, serialize($list).'-'.$val['username']);
             $this->websocket->write($val['socket'],json_encode($list));
             unset($key,$val,$list);
@@ -178,7 +184,6 @@ class ChatserverAction extends BaseAction
     function usernameByFile($k){
 
         // $users = json_decode(File::read($userFile),'true');
-        $this->redisConnect();
         $user = $this->redis->hGet(self::REDIS_KEY, $k);
         if(isset($user))
             return $user;
@@ -186,6 +191,12 @@ class ChatserverAction extends BaseAction
             return '游客';
     }
 
+    /**
+     * redis链接
+     * @Author xiezhibin  <xiezhibin@yuanxin-inc.com>
+     * @Date   2018-03-23
+     * @return [type]     [description]
+     */
     public function redisConnect(){
     	$config = C('REDIS');
 		$this->redis = new Redis();
