@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>网站注册会员管理-后台管理首页-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='网站注册会员管理 > 会员列表';
+        </php>
+        <include file="Common:intoHead" />
+    </head>
+    <body>
+        <div class="wrap">
+            <include file="Common:head" />
+            <div class="mainBody">
+                <include file="Common:left" />
+                <div id="Right">
+                    <div class="Item hr">
+                        <div class="current">网站注册会员管理</div>
+                    </div>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+                        <thead>
+                            <tr>
+                                <td>ID</td>
+                                <td>城市</td>
+                                <td>编码</td>
+                                <td>区号</td>
+                                <td>城市拼音</td>
+                                <td width="150">操作</td>
+                            </tr>
+                        </thead>
+                        <foreach name="list" item="m">
+                            <tr align="center" id="{$vo.id}">
+                                <td>{$m.id}</td>
+                                <td>{$m.name}</td>
+                                <td>{$m.code}</td>
+                                <td>{$m.area_code}</td>
+                                <td>{$m.citypy}</td>
+                                <td><a href="#" onclick="del()">编辑</a> | <a href="#" onclick="del()">删除</a></td>
+                            </tr>
+                        </foreach>
+                        <tr><td colspan="6" class="page">{$page}</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <include file="Common:foot" />
+    </body>
+</html>
+<script>
+    function del(){
+        var url=$(this).attr("href");
+            popup.confirm('你确定要删除？','删除',function(action){
+                if(action == 'ok'){ window.location=url; }
+        });
+        return false;
+    }
+</script>

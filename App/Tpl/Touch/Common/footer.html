@@ -1,0 +1,72 @@
+
+	  <div data-role="footer" data-theme="a">
+	    <h1>&copy; 2015-<php>echo date("Y");</php> laijiemi.cn</h1>
+	  </div>
+</div>
+</body>
+</html>
+<script>
+$(document).on("pageinit","#pageone",function(){
+		var width = $(window).width();
+		$(".jokeImg_img").css({
+			"max-width":(width-42)+"px",
+		});
+		//惰性加载
+		$(".jokeImg_img").lazyload({ 
+			  placeholder : "__PUBLIC__/images/loading.gif",
+			  effect: "fadeIn",
+			  load:setWidth(this,width),
+			  //container: $(".jokeImg_img"),
+		   }); 
+		
+		
+		// image.onload = function(){
+		// 	$(".jokeImg_img").css('max-width',(width-8)+'px');
+		// };
+		// var width = $(".jokeImg").width();
+		// $(".jokeImg_img").css("width",(width-8)+"px");
+	});
+	function setWidth(img,wh)
+	{	
+		if(img.width>(wh-42))
+		{
+			img.width = wh-42;
+		}
+	}
+	function zan(n,cl)
+	{
+		var numObj = $("."+cl+n+" sub");
+		var num = parseInt(numObj.html());
+		$(".good"+n+" img").removeAttr("onclick");
+		$(".good"+n).css("cursor","default");
+		$(".bad"+n+" img").removeAttr("onclick");
+		$(".bad"+n).css("cursor","default");
+		$.ajax({
+			url:"{:U('Mobile/Joke/zan','','')}",
+			data:"id="+n+"&c="+cl,
+			type:'post',
+			dataType:"json",
+			success:function(res)
+			{
+				if(res.status)
+				{
+					$.tipsBox({
+						obj:$("."+cl+n+" sub"),
+						interval:1000,
+					});
+					numObj.html(num+1);
+				}
+				else
+				{
+					$.tipsBox({
+						obj:$("."+cl+n+" sub"),
+						interval:1000,
+						str:res.info,
+					});
+				}
+				$(".good"+n+" img").attr("src","__PUBLIC__/images/13_hui.png");
+				$(".bad"+n+" img").attr("src","__PUBLIC__/images/12_hui.png");
+			},
+		});	
+	}
+</script>

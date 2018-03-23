@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>积分详情-后台管理首页-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='会员管理 > 积分详情';
+        </php>
+        <include file="Common:intoHead" />
+    </head>
+    <body>
+        <div class="wrap">
+            <include file="Common:head" />
+            <div class="mainBody">
+                <include file="Common:left" />
+                <div id="Right">
+                    <div class="Item hr">
+                        <div class="current">积分详情</div>
+                    </div>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+                        <thead>
+                            <tr>
+                                <td>uid</td>
+                                <td>积分</td>
+                                <td>类型</td>
+                                <td>期号</td>
+                                <td>备注</td>
+                                <td>操作时间</td>
+                            </tr>
+                        </thead>
+                        <foreach name="list" item="m">
+                            <tr align="center" id="{$vo.uid}">
+                                <td>{$m.user_id}</td>
+                                <td>{$m.pre}{$m.amount}</td>
+                                <td>{$m.type_str}</td>
+                                <td>{$m.issue}</td>
+                                <td>{$m.remark}</td>
+                                <td>{$m.add_time|date='Y-m-d H:i:s',###}</td>
+                            </tr>
+                        </foreach>
+                        <tr><td colspan="6" class="page">{$page}</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <include file="Common:foot" />
+    </body>
+</html>
+<script>
+    function del(){
+        var url=$(this).attr("href");
+            popup.confirm('你确定要删除？','删除',function(action){
+                if(action == 'ok'){ window.location=url; }
+        });
+        return false;
+    }
+</script>

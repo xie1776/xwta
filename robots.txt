@@ -1,0 +1,5 @@
+User-agent:*
+Disallow:/laijiemi/
+Allow:/
+
+Sitemap:http://www.xwta.net/sitemap.txt

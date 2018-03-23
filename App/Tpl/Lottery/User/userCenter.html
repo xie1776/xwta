@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
+        <title>投注列表</title>
+		<style>
+			*{margin: 0;padding: 0;}
+			.current_title{font-size: 18px;margin: 10px 10%;}
+			.current_title span{display: inline-block;float: right;margin-right: 10%;}
+			table{margin: 10px auto;}
+			table td{text-align: center;}
+			.page{
+				font-size: 12px;
+   				margin-left: 20%;
+			}
+			.page a {
+			    display: inline-block;
+			    border: 1px solid #cccccc;
+			    padding: 2px 3px 2px 3px;
+			    min-width: 16px;
+			    height: 16px;
+			    margin-right: 3px;
+			    text-align: center;
+			    line-height: 16px;
+			    color: black;
+			    text-decoration: none;
+			}
+			.page .current {
+			    display: inline-block;
+			    padding: 2px 3px 2px 3px;
+			    min-width: 10px;
+			    height: 16px;
+			    margin-right: 3px;
+			    text-align: center;
+			    line-height: 16px;
+			}
+            .td_show{
+                padding: 8px;
+                word-break:break-all;
+                width: 200px;
+            }
+		</style>
+    </head>
+    <body>
+        <div class="wrap">
+
+            <div class="mainBody">
+                <div id="Right">
+                    <div class="Item hr">
+                        <div class="current_title">投注列表 <span><a href="{:U('Index/index')}">返回首页</a></span></div>
+                    </div>
+                    <table width="90%" border="1" cellspacing="0" cellpadding="0" class="tab">
+                        <thead>
+                            <tr>
+                                <td>订单编号</td>
+                                <td>投注金额</td>
+                                <td>投注时间</td>
+                                <td>投注内容</td>
+                                <td>投注倍数</td>
+                                <td>开奖结果</td>
+                                <td>期号</td>
+                                <td>开奖时间</td>
+                                <td width="150">中奖金额</td>
+                            </tr>
+                        </thead>
+                        <volist name="list" id="vo">
+                            <tr align="center" id="{$vo.id}">
+                                <td align="left">{$vo.order_sn}</td>
+                                <td>{$vo.amount}</td>
+                                <td>{$vo.add_time|date="Y-m-d H:i:s",###}</td>
+                                <td class="td_show">
+                                    <foreach name="vo['bet']" item="bet">
+                                    {$bet} <br />
+                                    </foreach>
+                                </td>
+                                <td>{$vo.bet_times}</td>
+                                <td>{$vo.bet_res}</td>
+                                <td>{$vo.issue}</td>
+                                <td><if condition="$vo.win_time gt 0">{$vo.win_time|date="Y-m-d H:i:s",###}</if></td>
+                                <td>{$vo.win_amount}</td>
+                            </tr>
+                        </volist>
+                        <tr><td colspan="9" class="page" height="50">{$page}</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </body>
+</html>

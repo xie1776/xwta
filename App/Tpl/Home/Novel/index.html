@@ -1,0 +1,15 @@
+<include file="Common:header" />
+<article>
+    <div id="title">
+        <div class="title">{$info.title}</div>
+        <div class="toast">{$info.published|date="Y-m-d H:i:s",###}<span>来源：{$info.source}</span> <span>作者：{$info.author}</span></div>
+    </div>
+  <div class="entry content">
+      <ul>
+        <foreach name="list" item="vo">
+          <li><a href="{:U('Novel/novel',array('id'=>$vo['id']))}">{$vo.name}</a>——{$vo.author}——{$vo.status}</li>
+        </foreach>
+      </ul>
+  </div>
+</article>
+<include file="Common:footer" />

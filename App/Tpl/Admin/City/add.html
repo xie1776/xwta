@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title>添加管理员-权限管理-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='权限管理 > 添加管理员';
+        </php>
+    <include file="Common:intoHead" />
+</head>
+<body>
+    <div class="wrap"> <include file="Common:head" />
+        <div class="mainBody"> <include file="Common:left" />
+            <div id="Right">
+                <div class="contentArea">
+                    <div class="Item hr">
+                        <div class="current">新增城市</div>
+                    </div>
+                    <form action="" method="post">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">
+                            <tr>
+                                <th width="120">所属分类：</th>
+                                <td>
+                                    <select name="pid">
+                                        <foreach name="citys" item="c">
+                                        <option value="{$c.id}">{$c.name}</option>
+                                        </foreach>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="120">城市：</th>
+                                <td><input name="city" type="text" class="input" size="40" value="{$info.city}" id="city"/> <input type="button" onclick="checkCity()" value="检测" class="btn"> <span class="span-city"></span></td>
+                            </tr>
+                            <tr>
+                                <th>城市编号：</th>
+                                <td><input class="input" name="code" type="text" size="40" value="{$info.code}" placeholder="例如：bj" id="code"/> <input type="button" onclick="checkCode()" value="检测" class="btn"> <span class="span-code"></span></td>
+                            </tr>
+    
+                            <tr>
+                                <th>城市区号：</th>
+                                <td><input class="input" name="area_code" type="text" size="40" value="" /></td>
+                            </tr>
+                            <tr>
+                                <th>城市拼音：</th>
+                                <td><input class="input" name="citypy" type="text" size="40" value="" /> 例如：beijing</td>
+                            </tr>
+                        </table>
+                        <!-- <input type="hidden" name="aid" value="{$info.aid}"/> -->
+                    
+                    <div class="commonBtnArea">
+                        <!-- <button class="btn submit">提交</button> -->
+                        <input type="submit" class="btn" value="提交" />
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+<include file="Common:foot" />
+<script type="text/javascript">
+    function checkCity(){
+        var city = $("#city").val();
+        $.ajax({
+            url:"{:U('City/checkName')}",
+            data:"name="+city,
+            type:"post",
+            dataType:"json",
+            success:function(res){
+                var CObj = $(".span-city");
+                if(res.status){
+                    CObj.css({"color":"green",});
+                }else{
+                    CObj.css({"color":"red",});
+                }
+                CObj.html(res.info);
+            }
+        });
+    }
+
+    function checkCode(){
+        var code = $("#code").val();
+        $.ajax({
+            url:"{:U('City/checkCode')}",
+            data:"code="+code,
+            type:"post",
+            dataType:"json",
+            success:function(res){
+                var CObj = $(".span-code");
+                if(res.status){
+                    CObj.css({"color":"green",});
+                }else{
+                    CObj.css({"color":"red",});
+                }
+                CObj.html(res.info);
+            }
+        });
+    }
+</script>
+</body>
+</html>

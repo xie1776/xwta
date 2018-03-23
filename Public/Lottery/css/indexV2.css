@@ -1,0 +1,156 @@
+﻿*{margin: 0;padding: 0;}
+body{width: 1000px;margin: 10px auto;}
+.header{
+	border:1px solid #DEDEDE;
+	border-bottom: 3px solid #BA2636;
+	height: 80px;
+	padding-left: 8px;
+}
+.header .logo{    
+	width: 81px;
+    height: 85px;
+    display: block;
+    float: left;
+    text-indent: -999px;
+    overflow: hidden;
+    background: url(../images/czlogo_81x85_aa348eb.png) no-repeat;
+}
+.header h1{
+	font-size: 20px;
+    font-family: '微软雅黑',Simsun;
+    font-weight: 700;
+    display: block;
+    float: left;
+    margin-top:45px;
+}
+.header .gameintr{
+	color: #717171;
+	font: 12px/1.5 arial;
+    display: block;
+    float: left;
+    margin-top:55px;
+    margin-left: 5px;
+}
+.header .issue{
+	font-size: 16px;
+    font-family: '微软雅黑',Simsun;
+    font-weight: 700;
+    display: block;
+    float: right;
+    margin:55px 8px 0 0;
+}
+.main{
+	
+}
+.main .bet{
+	width: 739px;
+	height: 222px;
+	margin-top:20px;
+	background: white;
+    border-left:1px solid #DEDEDE;
+    border-right:1px solid #DEDEDE;
+    border-top:1px solid #DEDEDE;
+	border-bottom:1px solid #DEDEDE;
+    border-bottom-width: 80%;
+}
+.main .confirm_area{
+    width: 739px;
+    min-height: 302px;
+    background: white;
+    border-left:1px solid #DEDEDE;
+    border-right:1px solid #DEDEDE;
+    border-bottom:1px solid #DEDEDE;
+}
+.confirm_area .bet_area{
+    width: 660px;
+    height: 220px;
+    margin:8px auto;
+}
+.bet_area .bet_left{
+    float: left;
+    width: 450px;
+    height: 220px;
+    border: 1px solid #DEDEDE;
+}
+.bet_area .bet_right{
+    float: right;
+    width: 150px;
+    height: 252px;
+}
+.bet .red{
+	float: left;
+	width: 470px;
+}
+.bet .blue{
+	float: right;
+	width: 255px;
+}
+.red .title,.blue .title{
+	text-align: center;
+	font-size: 12px;
+	color:#717171;
+	margin-top:8px;
+}
+.bet ul{
+	list-style:none;
+	margin-left: 20px;
+	margin-top:18px;
+}
+.bet li{
+	width: 33px;
+    margin-right: 6px;
+    float: left;
+    text-align: center;
+    height: 50px;
+    line-height: 14px;
+}
+.red li a{
+	background: url(../images/newballs_0df07ea.png) 0 0 no-repeat;
+    width: 33px;
+    height: 33px;
+    display: block;
+    text-align: center;
+    line-height: 34px;
+    font-size: 16px;
+    font-weight: 700;
+    overflow: hidden;
+    outline: 0;
+    text-decoration: none;
+}
+.blue li a{
+	background: url(../images/newballs_0df07ea.png) 0 0 no-repeat;
+    width: 33px;
+    height: 33px;
+    display: block;
+    text-align: center;
+    line-height: 34px;
+    font-size: 16px;
+    font-weight: 700;
+    overflow: hidden;
+    outline: 0;
+    text-decoration: none;
+}
+.bet li a:link,.red li a:visited,.red li a:hover,.red li a:active{
+	color:#333333;
+}
+.confirm_choice{
+	border: 0;
+	display: inline-block;
+    height: 34px;
+    width: 137px;
+    background: url(../images/lotterybaseimg_9f1beac.png) no-repeat 0 -75px;
+    cursor: pointer;
+}
+.bet_left li{
+	border-bottom: 1px solid #DEDEDE;
+	font-size: 14px;
+}
+.bet_btn{
+	border:0;
+	display: inline-block;
+    width: 146px;
+    height: 43px;
+    background: url(../images/lotterybaseimg_9f1beac.png) no-repeat;
+    background-position: 0 -180px;
+    cursor: pointer;
+}

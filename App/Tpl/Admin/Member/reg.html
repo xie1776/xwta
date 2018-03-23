@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>添加、编辑新闻-后台管理-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='注册用户 > 新增用户';
+        </php>
+        <include file="Common:intoHead" />
+    </head>
+    <body>
+        <div class="wrap">
+            <include file="Common:head" />
+            <div class="mainBody">
+                <include file="Common:left" />
+                <div id="Right">
+                    <div class="Item hr">
+                        <div class="current">新增用户</div>
+                    </div>
+                    <form action="" method="post">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">
+                            <tr>
+                                <th width="100">邮箱：</th>
+                                <td><input id="title" type="text" class="input" size="60" name="email" value="{$info.title}"/></td>
+                            </tr>
+                            <tr>
+                                <th width="100">密码：</th>
+                                <td><input type="password" class="input" size="60" name="password" value="{$info.source}"/></td>
+                            </tr>
+                            <tr>
+                                <th width="100">确认：</th>
+                                <td><input type="password" class="input" size="60" name="repass" value="{$info.author}"/></td>
+                            </tr>
+                            <tr>
+                                <th width="100">昵称：</th>
+                                <td><input type="text" class="input" size="60" name="nickname" value="{$info.author}"/></td>
+                            </tr>
+                        
+                            <tr>
+                                <th>性别：</th>
+                                <td>
+                                    <label><input type="radio" name="sex" value="1" <if condition="$info['is_top'] eq 1">checked="checked"</if>/>男</label> &nbsp; 
+                                    <label><input type="radio" name="sex" value="0" <if condition="$info['is_top'] neq 1">checked="checked"</if> />女</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input type="submit" value="提交" class="btn" />
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <include file="Common:foot" />
+        <script type="text/javascript">
+        </script>
+
+    </body>
+</html>

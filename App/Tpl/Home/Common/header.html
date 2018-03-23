@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title><if condition="$info['title']">{$info.title}-</if>希望塔(xwta.net){$title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
+<meta name="keywords" content="{$web.keywords}" />
+<meta name="description" content="{$web.description}" />
+<link href="__PUBLIC__/Home_Css/base.css" rel="stylesheet">
+<link href="__PUBLIC__/Home_Css/index.css" rel="stylesheet">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="__PUBLIC__/Home_Css/entry.css">
+<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Js/sliders.js"></script>
+
+    <style>
+        header { width: 90%; margin: 20px auto; overflow: hidden; clear: both;border-bottom:1px solid #cccccc;padding-bottom: 20px; }
+        /* 头部信息 */
+        #topnav { width: 60%; background: black; height: 46px; line-height: 46px; text-align: center; border-radius: 46px; }
+        #topnav a { display: inline-block; font-size: 18px; font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif; padding: 0 20px; border-right: 1px solid #fff;}
+        #topnav a:hover { background: #ccc; color: #000; }
+        #topnav a { color: #FFF }
+        #topnav_current { background: #F3FF41; }/* 高亮选中颜色 */
+        a#topnav_current { color: #000 }
+        .ft-copyright { color: #fff; line-height: 24px; }
+        .ft-list { background: url(../images/ft-wx-s.png) no-repeat right; height: 100px }
+        #title{border-bottom: 1px solid #E5E5E5;height: 70px;}
+        .title{font-size: 28px;color:black;font-family: "宋体";color: black;text-align: center;height: 32px;font-weight: 700;}
+        .toast{text-align: center;margin-top: 8px;}
+        .toast span{margin-left: 10px;color:black;font-family: "楷体";font-size: 13px;}
+        article { width: 80%; margin: 20px auto 50px; min-height: 80%;padding:20px 10px;border: 1px solid #E5E5E5;}
+        .content{color:black;padding: 20px 0;}
+        /*footer*/
+        footer { background: #333; width: 100%; clear: both; text-align: center;position: fixed;bottom: 0; }
+        #tbox { width: 54px; float: right; position: fixed; right: 30px; bottom: 30px; _position: absolute; _bottom: auto; _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop, 10)||0)-(parseInt(this.currentStyle.marginBottom, 10)||0)));_margin-bottom: 15px; }
+        /*p{text-indent: 2em;}*/
+    </style>
+</head>
+<body>
+<header>
+  <div class="logo f_l"> <a href="/"><img src="__PUBLIC__/Images/logo.gif"></a> </div>
+  <nav id="topnav" class="f_r">
+    <ul>
+      <a href="http://www.xwta.net/" target="_self">首页</a>
+      <a href="http://www.xwta.net/Index/weList.html" target="_blank">实况视频</a>
+      <a href="{:U('News/detail')}" target="_self">新闻</a>
+      <a href="http://lottery.xwta.net" target="_self">双色球</a>
+      <a href="http://www.xwta.net/Index/index.html?type=2" target="_self">图片</a>
+<!--       <li><a href="http://www.xwta.net/Index/looker.html" target="_self">美女</a> </li> -->
+      <a href="http://www.xwta.net/Novel/index.html" target="_blank">小说</a>
+<!--       <li><a href="#" target="_blank">留言</a></li> -->
+    </ul>
+    
+  </nav>
+</header>

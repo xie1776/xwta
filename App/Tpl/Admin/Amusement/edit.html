@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>添加、编辑新闻-后台管理-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='资讯管理 > 添加编辑新闻';
+        </php>
+        <include file="Common:intoHead" />
+    </head>
+    <body style="width:600px;height:450px;padding-top:30px;">
+        <div class="wrap">
+            
+            <div class="mainBody">
+                
+                <!-- <div id="Right"> -->
+                    <div class="Item hr">
+                        <div class="current">添加编辑新闻</div>
+                    </div>
+                    <form action="{:U('Amusement/saveJoke')}" method="post">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">
+                            <tr>
+                                <th width="100">标题：</th>
+                                <td><input type="text" class="input" size="60" name="title" value="{$info.title}" /> </td>
+                            </tr>
+                            <tr>
+                                <th width="100">内容：</th>
+                                <td><textarea name="content" cols="60" rows="10">{$info.content}</textarea></td>
+                            </tr>
+                           
+                        </table>
+                        <div class="commonBtnArea" >
+                        <input type="hidden" name="id" value="{$info.id}" />
+                        <input type="submit" class="btn" value="提交" />
+                        <!-- <button class="btn submit">提交</button> -->
+                        </div>
+                        
+                    </form>
+
+                <!-- </div> -->
+            </div>
+        </div>
+        <div class="clear"></div>
+        <include file="Common:foot" />
+
+        </script>
+
+    </body>
+</html>
+<script>
+    $(function(){
+        var flag = 0;
+        <if condition="$flag neq ''">
+            flag = 1;
+        </if>
+        if(flag){
+            window.close();
+        }
+    });
+</script>

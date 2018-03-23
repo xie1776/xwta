@@ -1,0 +1,25 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="refresh" content="3;url={$Think.server.http_referer}">
+	<title>页面跳转</title>
+	<style>
+		div{color: red;font-size: 18px;font-weight: 700px;border: 1px solid gray;width: 200px;height: 60px;margin: 120px auto;text-align: center;-moz-border-radius: 15px;-webkit-border-radius: 15px; border-radius:15px;line-height:60px;background: #EDEDED;}
+		div a{color:blue;}
+	</style>
+</head>
+<body>
+	<div>{$info}<br/><span id="a">3</span>秒<a href="{$Think.server.http_referer}">跳转</a></div>
+</body>
+</html>
+<script>
+	var obj = document.getElementById("a");
+	var time = 3;
+	window.setInterval('a()',1000);
+	function a()
+	{
+		time--;
+		obj.innerHTML = time;
+	}
+</script>

@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width" />
+	<title>来揭秘-搞笑图片</title>
+	<link rel="stylesheet" href="__PUBLIC__/jquery/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css">
+	<script src="__PUBLIC__/jquery/jquery-1.9.1.js"></script>
+	<script src="__PUBLIC__/jquery/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="__PUBLIC__/jquery/jquery.lazyload.js"></script>
+	<script src="__PUBLIC__/jquery/jquery.favour.js"></script>
+	<style>
+		*{margin: 0;padding: 0;}
+		body{list-style-type: none;}
+		.jokeImg{border: 1px dashed #9D9D9D;margin-bottom: 20px;}
+		.jokeImg_img{display: block;margin: 0 auto;margin-bottom: 10px;}
+		.jokeImg_title{font-size: 18px;margin-bottom: 15px;font-weight: 700;font-family: "微软雅黑","宋体";background-color: #66CDAA;line-height: 35px;height: 35px;border-bottom: 1px dashed #9D9D9D;text-align: center;}
+		.share{position: fixed;bottom: 2px;background: gray;opacity: 0.7;width: 100%;}
+		.media{width:24px;height:24px;margin-left: auto;margin-right: auto;margin-bottom: 8px;}
+		.weixin{background: url(./Public/images/icons_2_24.png) no-repeat 0 0px;}
+		.qzone{background: url(./Public/images/icons_1_24.png) no-repeat 0 -53px;}
+		.weibo{background: url(./Public/images/icons_1_24.png) no-repeat 0 -104px;}
+		.renren{background: url(./Public/images/icons_1_24.png) no-repeat 0 -208px;}
+		.fen{background: url(./Public/images/icons_1_24.png) no-repeat 0 0px;}
+		.clear{clear: both;}
+		.zan{width: 200px;margin:20px auto;}
+		.zan .good{float:right;cursor: pointer;position: relative;}
+		.zan .bad{float:left;cursor: pointer;position: relative;}
+		.zan sub{position: absolute;top:-10px;right: -10px;}
+		.author_info{margin:2px 0px 5px 5px;color:#CCC;font-size: 12px;text-decoration: none;}
+		.jokeImg a{color:black;text-decoration: none;font-weight: 400;}
+		.jokeImg a:visited {color:black;text-decoration: none;}
+		.jokeImg .ul{list-style-type: none;margin: 0 0 10px 5px;}
+	</style>
+</head>
+
+<body>
+<div data-role="page" id="pageone">
+	  <div data-role="header" data-theme="a" style="background:#009966;">
+	    <h1>来揭秘-搞笑图片</h1>
+	    <div data-role="navbar">
+	      <ul>
+	        <li><a href="http://{$Think.server.http_host}" data-icon="home" target="_top">首页</a></li>
+	        <li><a href="/Index" data-icon="arrow-r" target="_top">来揭秘</a></li>
+	        <li><a href="/Joke" data-icon="search" target="_top">搞笑</a></li>
+	      </ul>
+	    </div>
+	  </div>
+
+	  <div data-role="content">
+	  	<div data-role="navbar">
+		<ul>
+			<li><a href="#"><div class="media fen"></div>分享</a></li>
+			<li><a href="http://www.jiathis.com/send/?webid=tsina&url={$siteUrl}&title={$siteTitle}"><div class="media weibo"></div>微博</a></li>
+			<li><a href="http://www.jiathis.com/send/?webid=weixin&url={$siteUrl}&title={$siteTitle}"><div class="media weixin"></div>微信</a></li>
+			<li><a href="http://www.jiathis.com/send/?webid=qzone&url={$siteUrl}&title={$siteTitle}"><div class="media qzone"></div>空间</a></li>
+		</ul>
+		</div>
+	  	<foreach name="list" item="cate">
+	    <div class="jokeImg">
+	    	<a href="#" target="_top">
+	    	<div class="jokeImg_title">{$cate.name}</div>
+	    	</a>
+	    	<ul class="ul">
+	    	<foreach name="cate.arts" item="a">
+				<li><a href="http://{$Think.server.http_host}{:U('article/'.$a['id'])}" target="_top">{$a.title}</a></li>
+	    	</foreach>
+	    	</ul>
+	    </div>
+	    </foreach>
+		  <div class="ui-grid-c">
+		     <div class="ui-block-a">
+		     	<if condition="$nowPage eq $pre">
+	    		<else />
+		     	<a href="?p=1" data-role="button">首</a>
+		     	</if>
+		     </div>
+		     <div class="ui-block-b">
+		     	<if condition="$nowPage eq $pre">
+	    		<else />
+		    	<a href="?p={$pre}" data-role="button">上</a>
+		    	</if>
+		     </div>
+		     <div class="ui-block-c">
+		    	<if condition="$nowPage eq $next">
+				<else />
+		    	<a href="?p={$next}" data-role="button">下</a>
+		    	</if>
+		     </div>
+		     <div class="ui-block-d">
+		    	<if condition="$nowPage eq $next">
+				<else />
+		    	<a href="?p={$totalpage}" data-role="button">尾</a>
+		    	</if>
+		     </div>
+		   </div>
+	  </div>
+
+	  <div data-role="footer" data-theme="a">
+	    <h1>&copy; 2015-<php>echo date("Y");</php> laijiemi.cn</h1>
+	  </div>
+</div>
+</body>
+</html>
+<script>
+$(document).on("pageinit","#pageone",function(){
+		var width = $(window).width();
+		$(".jokeImg_img").css({
+			"max-width":(width-42)+"px",
+		});
+		//惰性加载
+		$(".jokeImg_img").lazyload({ 
+			  placeholder : "__PUBLIC__/images/loading.gif",
+			  effect: "fadeIn",
+			  load:setWidth(this,width),
+			  //container: $(".jokeImg_img"),
+		   }); 
+		
+		
+		// image.onload = function(){
+		// 	$(".jokeImg_img").css('max-width',(width-8)+'px');
+		// };
+		// var width = $(".jokeImg").width();
+		// $(".jokeImg_img").css("width",(width-8)+"px");
+	});
+	function setWidth(img,wh)
+	{	
+		if(img.width>(wh-42))
+		{
+			img.width = wh-42;
+		}
+	}
+	function zan(n,cl)
+	{
+		var numObj = $("."+cl+n+" sub");
+		var num = parseInt(numObj.html());
+		$(".good"+n+" img").removeAttr("onclick");
+		$(".good"+n).css("cursor","default");
+		$(".bad"+n+" img").removeAttr("onclick");
+		$(".bad"+n).css("cursor","default");
+		$.ajax({
+			url:"{:U('Mobile/Joke/zan','','')}",
+			data:"id="+n+"&c="+cl,
+			type:'post',
+			dataType:"json",
+			success:function(res)
+			{
+				if(res.status)
+				{
+					$.tipsBox({
+						obj:$("."+cl+n+" sub"),
+						interval:1000,
+					});
+					numObj.html(num+1);
+				}
+				else
+				{
+					$.tipsBox({
+						obj:$("."+cl+n+" sub"),
+						interval:1000,
+						str:res.info,
+					});
+				}
+				$(".good"+n+" img").attr("src","__PUBLIC__/images/13_hui.png");
+				$(".bad"+n+" img").attr("src","__PUBLIC__/images/12_hui.png");
+			},
+		});	
+	}
+</script>

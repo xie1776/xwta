@@ -1,0 +1,46 @@
+<include file="Common:header" />
+	<style>
+		.page{text-align: center;height: 30px;margin: 8px 0 90px 0;font-size: 12px;}
+		.page a {
+		    display: inline-block;
+		    border: 1px solid #cccccc;
+		    padding: 2px 3px 2px 3px;
+		    min-width: 16px;
+		    height: 16px;
+		    margin-right: 3px;
+		    text-align: center;
+		    line-height: 16px;
+		    color: black;
+		    margin-bottom: 4px;
+		}
+		.page .current {
+		    display: inline-block;
+		    padding: 2px 3px 2px 3px;
+		    min-width: 10px;
+		    height: 16px;
+		    margin-right: 3px;
+		    text-align: center;
+		    line-height: 16px;
+		}
+		.entry{text-indent: 2em;}
+		.entry img{margin-right: auto;margin-left: auto;}
+		#title .title{font-size: 22px;display: inline-block;width: 90%;overflow: hidden;text-align: center;}
+		.title a{color:black;}
+	</style>
+<foreach name="list" item="vo">
+	<article>
+	    <div id="title">
+	        <div class="title"><a href="{$vo['url']}" target="_blank">{$vo.title}</a></div>
+	        <div class="toast">{$vo.add_time|date="Y-m-d H:i:s",###}<span>来源：网络</span> <span>作者：未知</span></div>
+	    </div>
+	  <div class="entry content">
+	      <if condition="$vo['type'] eq 1">
+	      	{$vo.content}
+	      <else />
+			<img src="{$vo.picUrl}{$vo.img}">
+		</if>
+	  </div>
+	</article>
+</foreach>
+<div class="page">{$page}</div>
+<include file="Common:footer" />

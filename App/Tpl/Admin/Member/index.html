@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>网站注册会员管理-后台管理首页-{$site.SITE_INFO.name}</title>
+        <php>
+            $addCss="";
+            $addJs="";
+            $currentNav ='网站注册会员管理 > 会员列表';
+        </php>
+        <include file="Common:intoHead" />
+    </head>
+    <body>
+        <div class="wrap">
+            <include file="Common:head" />
+            <div class="mainBody">
+                <include file="Common:left" />
+                <div id="Right">
+                    <div class="Item hr">
+                        <div class="current">网站注册用户管理</div>
+                    </div>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+                        <thead>
+                            <tr>
+                                <td>ID</td>
+                                <td>邮箱</td>
+                                <td>用户</td>
+                                <td>城市</td>
+                                <td>验证邮箱</td>
+                                <td>积分</td>
+                                <td width="150">操作</td>
+                            </tr>
+                        </thead>
+                        <foreach name="list" item="m">
+                            <tr align="center" id="{$vo.uid}">
+                                <td>{$m.uid}</td>
+                                <td>{$m.email}</td>
+                                <td>{$m.username}</td>
+                                <td>{$citys[$m['city']]}</td>
+                                <td><if condition="$m['verify_status'] eq 0"><font color="red">未验证</font><else/><font color="green">已验证</font></if></td>
+                                <td>{$m.balance}</td>
+                                <td><a href="{:U('Member/balance',array('user_id'=>$m['uid']))}">查看积分</a> | <a href="{:U('Member/addBalance',array('id'=>$m['uid']))}">增加积分</a></td>
+                            </tr>
+                        </foreach>
+                        <tr><td colspan="6" class="page">{$page}</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <include file="Common:foot" />
+    </body>
+</html>
+<script>
+    function del(){
+        var url=$(this).attr("href");
+            popup.confirm('你确定要删除？','删除',function(action){
+                if(action == 'ok'){ window.location=url; }
+        });
+        return false;
+    }
+</script>

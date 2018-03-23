@@ -1,0 +1,13 @@
+<include file="Common:header" />
+<article>
+    <div id="title" style="height: auto;">
+        <div class="title" style="height: auto;">{$info.title}</div>
+        <div class="toast">{$info.create_time|date="Y-m-d H:i:s",###}<span>来源：{$info.source}</span> <span>作者：{$info.author}</span></div>
+    </div>
+  <div class="entry content">
+      {$info.content}
+      <br>
+      <img src="{$info.img}" />
+  </div>
+</article>
+<include file="Common:footer"/>

@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width" />
+	<title>来揭秘-美女图片-{$info.title}</title>
+	<link rel="stylesheet" href="__PUBLIC__/jquery/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css">
+	<script src="__PUBLIC__/jquery/jquery-1.9.1.js"></script>
+	<script src="__PUBLIC__/jquery/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script src="__PUBLIC__/jquery/jquery.lazyload.js"></script>
+	<script src="__PUBLIC__/jquery/jquery.favour.js"></script>
+	<script src="http://v2.uyan.cc/code/uyan.js?uid=2042669"></script>
+	<style>
+		*{margin: 0;padding: 0;}
+		.head{color:black;}
+		.head a{display:block;background: #1D1D1D;font-size: 16px;}
+		.foot{bottom: 0;}
+		.jokeImg_new{margin-bottom: 8px;}
+		.jokeImg_new_img{display: block;margin: 0 auto;}
+		.main{padding: 10px 0px 10px 0px;}
+		.zan{width: 200px;margin:20px auto;}
+		.zan .good{float:right;cursor: pointer;position: relative;}
+		.zan .bad{float:left;cursor: pointer;position: relative;}
+		.zan sub{position: absolute;top:-10px;right: -10px;}
+		.clear{clear: both;}
+		.author_info{margin:2px 0px 5px 5px;color:#CCC;font-size: 12px;border-bottom: 1px dashed #ccc;margin-bottom: 20px;text-align: center;}
+		.share{position: fixed;bottom: 2px;background: gray;opacity: 0.7;width: 100%;}
+		.media{width:24px;height:24px;margin-left: auto;margin-right: auto;margin-bottom: 8px;}
+		.weixin{background: url(__PUBLIC__/images/icons_2_24.png) no-repeat 0 0px;}
+		.qzone{background: url(__PUBLIC__/images/icons_1_24.png) no-repeat 0 -53px;}
+		.weibo{background: url(__PUBLIC__/images/icons_1_24.png) no-repeat 0 -104px;}
+		.renren{background: url(__PUBLIC__/images/icons_1_24.png) no-repeat 0 -208px;}
+		.fen{background: url(__PUBLIC__/images/icons_1_24.png) no-repeat 0 0px;}
+		.comment{padding: 8px;}
+	</style>
+</head>
+<body>
+　	<div data-role="page" id="pageone">
+		
+	  	<div data-role="header" class="head" style="background: #009966;">
+	  		<a href="http://m.laijiemi.cn/" data-icon="back" target="_top" style="background: #009966;border:1px solid #009966;">返回</a>
+	    	<h1>{$info.title}</h1>
+	  	</div>
+
+	  	<div data-role="content" class="main" style="padding:10px 0 10px 0;">
+	  		<div class="author_info">admin @ {$info.add_time|date="Y-m-d H:i",###}</div>
+	  		<div class="jokeImg_new">
+				<img src="{$info.picUrl}" class="jokeImg_new_img" data-original="{$info.picUrl}" alt="{$info.picUrl}">
+			</div>
+			
+		    <div class="comment">
+	    	<!-- UY BEGIN -->
+			<div id="uyan_frame"></div>
+			<!-- UY END -->
+			</div>
+	  	</div>
+	    <div data-role="footer" class="foot" data-position="fixed">
+		    <div data-role="navbar">
+			      <ul>
+					<li><a href="#"><div class="media fen"></div>分享</a></li>
+					<li><a href="http://www.jiathis.com/send/?webid=tsina&url={$siteUrl}&title={$siteTitle}"><div class="media weibo"></div>微博</a></li>
+					<li><a href="http://www.jiathis.com/send/?webid=weixin&url={$siteUrl}&title={$siteTitle}"><div class="media weixin"></div>微信</a></li>
+					<li><a href="http://www.jiathis.com/send/?webid=qzone&url={$siteUrl}&title={$siteTitle}"><div class="media qzone"></div>空间</a></li>
+				</ul>
+			</div>
+	  	</div>
+	</div>
+</body>
+</html>
+<script>
+	localStorage.id = {$joke.id};
+	$(document).on("pageinit","#pageone",function(){
+		//内容适应屏幕高度
+		var height = $(window).height();
+		var hdHeight = $(".head").outerHeight();
+		var ftHeight = $(".foot").outerHeight();
+		$(".main").outerHeight(height-hdHeight-ftHeight);
+		//设置图片宽度
+		var width = $(window).width();
+		$(".jokeImg_new_img").css({
+			"max-width":(width-2)+"px",
+		});
+		
+		$(document).on("swiperight","#pageone",function(){
+			//var id = $(".main .hide").html();
+			id = localStorage.id
+			switchImg('next',id);
+		}); 
+		$(document).on("swipeleft","#pageone",function(){
+			//var id = $(".main .hide").html();
+			id = localStorage.id;
+		  	switchImg('last',id);
+		}); 
+	});
+	function setWidth(img,wh)
+	{	
+		if(img.width>wh-2)
+			img.width = wh-2;
+	}
+	function zan(n,cl)
+	{
+		var numObj = $("."+cl+n+" sub");
+		var num = parseInt(numObj.html());
+		$(".good"+n+" img").removeAttr("onclick");
+		$(".good"+n).css("cursor","default");
+		$(".bad"+n+" img").removeAttr("onclick");
+		$(".bad"+n).css("cursor","default");
+		$.ajax({
+			url:"{:U('Mobile/Joke/zan','','')}",
+			data:"id="+n+"&c="+cl,
+			type:'post',
+			dataType:"json",
+			success:function(res)
+			{
+				if(res.status)
+				{
+					$.tipsBox({
+						obj:$("."+cl+n+" sub"),
+						interval:1000,
+					});
+					numObj.html(num+1);
+				}
+				else
+				{
+					$.tipsBox({
+						obj:$("."+cl+n+" sub"),
+						interval:1000,
+						str:res.info,
+					});
+				}
+				$(".good"+n+" img").attr("src","__PUBLIC__/images/13_hui.png");
+				$(".bad"+n+" img").attr("src","__PUBLIC__/images/12_hui.png");
+			},
+		});	
+	}
+	function switchImg(op,id)
+	{	
+		var width = $(window);
+	  	$.ajax({
+	  		url:"{:U('Mobile/Joke/switchImg')}",
+	  		//url:'/laijiemi/1/Mobile/Joke/switchImg.html',
+	  		data:"id="+id+"&op="+op,
+	  		type:"get",
+	  		dataType:"json",
+	  		success:function(res)
+	  		{
+	  			if(res.status)
+	  			{
+	  				var res = res.list;
+	  				$(".head h1").html(res.title);
+					$(".main p").html(res.title);
+					//$(".main p span").html(res.id);
+					
+					$(".jokeImg_new_img").attr("src",res.img);
+					$(".good img").removeAttr("onclick");
+					$(".bad img").removeAttr("onclick");
+					$(".good img").attr("src","__PUBLIC__/images/13.png");
+					$(".bad img").attr("src","__PUBLIC__/images/12.png");
+					$(".good").css("cursor","pointer");
+					$(".bad").css("cursor","pointer");
+					$(".bad img").attr("onclick","zan("+res.id+",'bad')");
+					$(".good img").attr("onclick","zan("+res.id+",'good')");
+					$(".bad").removeClass("bad"+localStorage.id);
+					$(".good").removeClass("good"+localStorage.id);
+					$(".bad").addClass("bad"+res.id);
+					$(".good").addClass("good"+res.id);
+					$(".bad sub").html(res.bad);
+					$(".good sub").html(res.good);
+					$(".author_info").html("Publish @ "+res.add_time);
+					$(".foot ul a:eq(1)").attr("href","http://www.jiathis.com/send/?webid=tsina&url="+res.url+"&title="+res.siteTitle);
+					$(".foot ul a:eq(2)").attr("href","http://www.jiathis.com/send/?webid=weixin&url="+res.url+"&title="+res.siteTitle);
+					$(".foot ul a:eq(3)").attr("href","http://www.jiathis.com/send/?webid=qzone&url="+res.url+"&title="+res.siteTitle);
+					localStorage.id = res.id;
+					document.title = '来揭秘-搞笑图片-'+res.title;
+	  			}
+	  		},
+	  	});
+	}
+</script>

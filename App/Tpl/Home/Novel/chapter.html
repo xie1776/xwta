@@ -1,0 +1,16 @@
+<include file="Common:header" />
+<article>
+    <div id="title" style="height: auto;">
+        <div class="title" style="height: auto;">{$info.title}</div>
+        <div class="toast">{$info.up_time|date="Y-m-d H:i:s",###}<span>来源：{$info.source}</span> <span>作者：{$info.author}</span></div>
+    </div>
+  <div class="entry content">
+      {$info.content}
+      <br>
+      上：
+      <a href="{:U('Novel/chapter',array('id'=>$info['prev']['id']))}">{$info.prev.title}</a>
+      下：
+      <a href="{:U('Novel/chapter',array('id'=>$info['next']['id']))}">{$info.next.title}</a>
+  </div>
+</article>
+<include file="Common:footer"/>

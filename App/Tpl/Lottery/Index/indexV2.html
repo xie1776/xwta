@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>V2</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Lottery/css/indexV2.css" />
+	<script src="__PUBLIC__/Js/jquery-1.9.0.min.js"></script>
+</head>
+<body>
+	<div class="header">
+		<span class="logo">1</span>
+		<h1>双色球</h1>
+		<span class="gameintr">这是一个双色球投注游戏！注册送50积分，每天登陆送5积分。</span>
+		<span class="issue">本期期号: 2017108</span>
+	</div>
+	<div class="main">
+		<div class="bet">
+			<div class="red">
+				<div class="title">红球区 至少选择6个红球</div>
+				<ul class="red-li">
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_01">01</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_02">02</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_03">03</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_04">04</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_05">05</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_06">06</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_07">07</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_08">08</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_09">09</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_10">10</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_11">11</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_12">12</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_13">13</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_14">14</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_15">15</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_16">16</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_17">17</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_18">18</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_19">19</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_20">20</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_21">21</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_22">22</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_23">23</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_24">24</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_25">25</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_26">26</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_27">27</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_28">28</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_29">29</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_30">30</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_31">31</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_32">32</a></li>
+					<li><a href="javascript:;" data-xz="0" class="js_ball red_33">33</a></li>
+				</ul>
+				<div style="clear:both;margin-left: 180px;">
+					<select name="" id="rand_red">
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
+					<input type="button" value="随机红球" onclick="randBall(1)" />
+				</div>
+			</div>
+			<div class="blue">
+				<div class="title">蓝球区 至少选择1个红球</div>
+				<ul class="blue-li">
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">01</a></li>
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">02</a></li>
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">03</a></li>
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">04</a></li>
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">05</a></li>
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">06</a></li>
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">07</a></li>
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">08</a></li>
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">09</a></li>
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">10</a></li>
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">11</a></li>
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">12</a></li>
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">13</a></li>
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">14</a></li>
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">15</a></li>
+					<li><a href="javascript:;" data-xz="0" blue="1" class="js_ball blue_01">16</a></li>
+				</ul>
+				<div style="clear:both;margin-left: 80px;">
+					<select name="" id="rand_blue">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+					<input type="button" value="随机蓝球" onclick="randBall(2)" />
+				</div>
+			</div>
+		</div>
+		<form action="" method="post">
+		<div class="confirm_area">
+			<div style="text-align: center;padding-top: 8px;"><input type="button" onclick="joinBet()" class="confirm_choice"/></div>
+			<div class="bet_area">
+				<!-- <ul class="bet_left" style="list-style: none;padding:8px;overflow: hidden;">
+					
+				</ul> -->
+				<textarea name="" id="" cols="30" rows="10" class="bet_left" style="line-height: 14px;padding:8px 0 0 8px"></textarea>
+				<div class="bet_right">
+					<input type="button" value="清空所有" style="position: relative;top:190px;"/>
+				</div>
+			</div>
+			<div style="text-align: center;padding-top: 8px;margin: 20px;">
+				投注：<input type="number" name="bet_times" style="width: 50px" />倍,
+				<input type="submit" class="bet_btn" value="" />
+			</div>
+		</div>
+		</form>
+	</div>
+</body>
+</html>
+
+<script>
+	$(function(){
+		$(".js_ball").click(function(){
+			var is_choice = $(this).attr("data-xz");
+			var blue = $(this).attr("blue");
+			if(is_choice == "0"){
+				if(blue == 1){
+					$(this).css({
+						"color":"white",
+						"background-position": "-140px 0",
+					});
+				}else{
+					$(this).css({
+						"color":"white",
+						"background-position": "-70px 0",
+					});
+				}
+	
+				$(this).attr("data-xz",1);
+			}else{
+				$(this).css({
+					"color":"#333333",
+					"background-position": "0 0",
+				});
+				$(this).attr("data-xz",0);
+			}
+		}); 
+	});
+
+	function joinBet(){
+
+		var red = new Array();
+		$(".red-li").find('li').each(function(){
+			var Aobject = $(this).children('a');
+			var data_xz = Aobject.attr('data-xz');
+			if(data_xz == 1){
+				red.push(Aobject.html());
+				reBall(Aobject);
+			}
+		});
+		var blue = new Array();		
+		$(".blue-li").find('li').each(function(){
+			var Aobject = $(this).children('a');
+			var data_xz = Aobject.attr('data-xz');
+			if(data_xz == 1){
+				blue.push(Aobject.html());
+				reBall(Aobject);
+			}
+		});
+
+		var red_str = red.join(',');
+		var blue_str = blue.join(',');
+		var amount = calAcount(red,blue);
+		// $(".bet_left").append("<li>"+red_str+'+'+blue_str+' '+amount+'积分</li>');
+		var textareaObj = $(".bet_left");
+		var history_content = textareaObj.val();
+		if(history_content != ''){
+			history_content += red_str+'+'+blue_str+' '+amount+"积分\n\n";
+		}else{
+			history_content = red_str+'+'+blue_str+' '+amount+"积分\n\n";
+		}
+		textareaObj.val(history_content);
+	}
+
+	function calAcount(red,blue){
+		var r = red.length;
+		var b = blue.length;
+		var base = 2;
+		if(r>=6){
+			return (r * (r-1)* (r-2)* (r-3)* (r-4)* (r-5))/720*b*base;
+		}
+		return 0;
+	}
+
+	function reBall(object){
+		object.css({
+			"color":"#333333",
+			"background-position": "0 0",
+		});
+		object.attr('data-xz',0);
+	}
+	function colorBall(arr,ball){
+		if(ball ==1){
+			$(".red-li").find('li').each(function(){
+				var Aobject = $(this).children('a');
+				var red = Aobject.html();
+				var result= $.inArray(red, arr);
+				if(result != -1){
+					Aobject.attr('data-xz',1);
+					Aobject.css({
+						"color":"white",
+						"background-position": "-70px 0",
+					});
+				}
+			});
+		}else{
+			$(".blue-li").find('li').each(function(){
+				var Aobject = $(this).children('a');
+				var blue = Aobject.html();
+				var result= $.inArray(blue, arr);
+				if(result != -1){
+					Aobject.attr('data-xz',1);
+					Aobject.css({
+						"color":"white",
+						"background-position": "-140px 0",
+					});
+				}
+			});
+		}
+	}
+	/**
+	 * 取出N个随机数
+	 * @Author   zhibin
+	 * @DateTime 2017-09-18
+	 * @param    {[type]}   arr   [description]
+	 * @param    {[type]}   count [description]
+	 * @return   {[type]}         [description]
+	 */
+	function getRandomArrayElements(arr, count) {
+	    var shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
+	    while (i-- > min) {
+	        index = Math.floor((i + 1) * Math.random());
+	        temp = shuffled[index];
+	        shuffled[index] = shuffled[i];
+	        shuffled[i] = temp;
+	    }
+	    return shuffled.slice(min);
+	}
+	//red:1 blue:2
+	function randBall(ball=1){
+		if(ball==1){
+			red_empty();
+			var arr = ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33'];
+			var rand = $("#rand_red").val();
+		}else{
+			blue_empty();
+			var arr = ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16'];
+			var rand = $("#rand_blue").val();
+		}
+		var rand_arr = getRandomArrayElements(arr,rand)
+		colorBall(rand_arr,ball);
+	}
+
+	function red_empty(){
+		$(".red-li").find('li').each(function(){
+			var Aobject = $(this).children('a');
+			var data_xz = Aobject.attr('data-xz');
+			if(data_xz == 1){
+				reBall(Aobject);
+			}
+		});
+
+	}
+	function blue_empty(){
+		$(".blue-li").find('li').each(function(){
+			var Aobject = $(this).children('a');
+			var data_xz = Aobject.attr('data-xz');
+			if(data_xz == 1){
+				reBall(Aobject);
+			}
+		});
+	}
+</script>
