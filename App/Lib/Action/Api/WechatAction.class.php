@@ -225,7 +225,7 @@
                     //'</p>' => "\n",
                     '</p>' => '',
                     "\n\n" => "\n",
-                    '<br/>' => "\n";
+                    '<br/>' => "\n",
                     );
                 $content = strtr($joke['content'], $replace);
                 $content = trim($content);
