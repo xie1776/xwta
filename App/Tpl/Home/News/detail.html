@@ -141,7 +141,7 @@
         <div class="am-panel-hd">最新文章</div>
         <ul class="am-list blog-list">
           <foreach name="recommend" item="a">
-          <li><a href="http://www.xwta.net/news-{$a['id']}.html" target="_blank">{$a['title']}</a></li>
+          <li><a href="{:U('News/detail',['id'=>$a['id']])}" target="_blank">{$a['title']}</a></li>
           </foreach>
         </ul>
       </section>
@@ -150,7 +150,7 @@
         <div class="am-panel-hd">实况足球</div>
         <ul class="am-list blog-list">
           <foreach name="we_list" item="a">
-          <li><a href="http://www.xwta.net/news-{$a['id']}.html" target="_blank">{$a['title']}</a></li>
+          <li><a href="{:U('News/detail',['id'=>$a['id']])}" target="_blank">{$a['title']}</a></li>
           </foreach>
         </ul>
       </section>
