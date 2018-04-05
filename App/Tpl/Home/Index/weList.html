@@ -118,7 +118,7 @@
       <ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
       <foreach name="list" item="we">
         <li>
-          <a href="http://www.xwta.net/news-{$we['id']}.html" target="_blank">
+          <a href="{:U('News/detail',['id'=>$we['id']])}" target="_blank">
             <img class="am-img-thumbnail am-img-bdrs" src="http://s.amazeui.org/media/i/demos/bing-1.jpg" alt=""/>
             <div class="gallery-title">{$we['title']}</div>
             <div class="gallery-desc">{$we['published']}</div>

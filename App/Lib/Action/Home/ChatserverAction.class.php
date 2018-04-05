@@ -25,8 +25,6 @@ class ChatserverAction extends BaseAction
 	public function index()
 	{
 		include APP_PATH."/Lib/Libs/Websocket.class.php";
-		include APP_PATH."/Lib/Libs/RedisMan.class.php";
-
 		$server = C('CHAT');
 		$config = [
 	        'address' => $server['server'],
@@ -92,11 +90,11 @@ class ChatserverAction extends BaseAction
                         unset($key,$val);
                     }
                 }else{
-                    $data['info'] = $this->getUserName($event['sign']).' 对wo说:'.$accapt['msg'];
+                    $data['info'] = '['.$this->getUserName($event['sign']).']对你说:'.$accapt['msg'];
                     preg_match_all('/\((\d+)\)/', $accapt['toUser'],$arr_k);
                     $k = $arr_k[1][0];
                     $this->websocket->idwrite($k,json_encode($data)); //给对方发
-                    $data['info'] = '你对'.$accapt['toUser'].' 说:'.$accapt['msg'];
+                    $data['info'] = '你对['.$accapt['toUser'].']说:'.$accapt['msg'];
                     $this->websocket->idwrite($event['k'],json_encode($data)); //给自己发
                     
                 }

@@ -3,6 +3,7 @@
 class CommonAction extends BaseAction {
 
     public $loginMarked;
+    protected $login_page = '';
 
     /**
       +----------------------------------------------------------
@@ -13,7 +14,7 @@ class CommonAction extends BaseAction {
     public function _initialize() {
         header("Content-Type:text/html; charset=utf-8");
         //header('Content-Type:application/json; charset=utf-8');
-
+        $this->login_page = U('/admin/Public/index');
         $token = C('TOKEN');
         $this->loginMarked = md5($token['admin_marked']);
         $this->checkLogin();
@@ -70,18 +71,19 @@ class CommonAction extends BaseAction {
             if (time() > (end($cookie) + $timeout['admin_timeout'])) {
                 setcookie("$this->loginMarked", NULL, -3600, "/");
                 unset($_SESSION[$this->loginMarked], $_COOKIE[$this->loginMarked]);
-                $this->error("登录超时，请重新登录", U("Public/index"));
+                $this->error("登录超时，请重新登录", $this->login_page);
             } else {
                 if ($cookie[0] == $_SESSION[$this->loginMarked]) {
                     setcookie("$this->loginMarked", $cookie[0] . "_" . time(), 0, "/");
                 } else {
                     setcookie("$this->loginMarked", NULL, -3600, "/");
                     unset($_SESSION[$this->loginMarked], $_COOKIE[$this->loginMarked]);
-                    $this->error("帐号异常，请重新登录", U("Public/index"));
+                    $this->error("帐号异常，请重新登录", $this->login_page);
                 }
             }
         } else {
-            $this->redirect("Public/index");
+            // echo $this->login_page;die;
+            redirect($this->login_page);
         }
         return TRUE;
     }
@@ -141,13 +143,13 @@ class CommonAction extends BaseAction {
         foreach ($cache as $url => $name) {
             if ($i == 1) {
                 $css = $url == $module || !$cache[$module] ? "fisrt_current" : "fisrt";
-                $menu.='<li class="' . $css . '"><span><a href="' . U($url . '/index') . '">' . $name . '</a></span></li>';
+                $menu.='<li class="' . $css . '"><span><a href="' . U('/admin/'.$url . '/index') . '">' . $name . '</a></span></li>';
             } else if ($i == $count) {
                 $css = $url == $module ? "end_current" : "end";
-                $menu.='<li class="' . $css . '"><span><a href="' . U($url . '/index') . '">' . $name . '</a></span></li>';
+                $menu.='<li class="' . $css . '"><span><a href="' . U('/admin/'.$url . '/index') . '">' . $name . '</a></span></li>';
             } else {
                 $css = $url == $module ? "current" : "";
-                $menu.='<li class="' . $css . '"><span><a href="' . U($url . '/index') . '">' . $name . '</a></span></li>';
+                $menu.='<li class="' . $css . '"><span><a href="' . U('/admin/'.$url . '/index') . '">' . $name . '</a></span></li>';
             }
             $i++;
         }
@@ -219,14 +221,14 @@ class CommonAction extends BaseAction {
             foreach ($cache[$menu] as $url => $title) {
                 
                 if(strpos($url, '/')!==false){
-                    $url = U($url);
+                    $url = U('/admin/'.$url);
                     $sub_menu[$i] = array('url' => $url, 'title' => $title);
                 }else{
                     if(is_array($title)){
                         $sub_menu[$i] = array('url' => 'javascript:;', 'title' => $title['name'], 'sub' => array());
                         foreach ($title as $k => $v) {
                             if($k!='name')
-                                $sub_menu[$i]['sub'][] = array('url' => U($k), 'title' => $v);
+                                $sub_menu[$i]['sub'][] = array('url' => U('/admin/'.$k), 'title' => $v);
                         }
                     }
                 }

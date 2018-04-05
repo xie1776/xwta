@@ -12,7 +12,7 @@ class SiteAction extends CommonAction {
     public function index() {
         $web = C('WEB');
         $this->assign('site',$web);
-        $this->display();
+        $this->display('index');
     }
 
     /**
@@ -23,7 +23,7 @@ class SiteAction extends CommonAction {
     public function setEmailConfig() {
         $web = C('EMAIL');
         $this->assign('site',$web);
-        $this->display();
+        $this->display('setEmailConfig');
         //stemConfig("SYSTEM_EMAIL");
     }
 
@@ -35,7 +35,7 @@ class SiteAction extends CommonAction {
     public function setSafeConfig() {
         $web = C('TOKEN');
         $this->assign('token',$web);
-        $this->display();
+        $this->display('setSafeConfig');
     }
 
     /**
@@ -63,7 +63,7 @@ class SiteAction extends CommonAction {
                 echo json_encode(array('status' => 0, 'info' => $str . '失败，请检查', 'url' => __ACTION__));
             }
         } else {
-            $this->display();
+            $this->display('checkSystemConfig');
         }
     }
 
@@ -125,4 +125,4 @@ class SiteAction extends CommonAction {
 
 }
 
-?>
+

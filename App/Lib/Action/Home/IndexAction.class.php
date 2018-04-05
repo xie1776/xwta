@@ -31,13 +31,13 @@ class IndexAction extends HomeAction {
         $this->assign('title','_'.$webInfo['title']);
         $this->assign('list',$data['list']);
         $this->assign('page',$data['page']);
-        $this->display();
+        $this->display('index');
     }
     /**
      * 显示视频
      * @return [type] [description]
      */
-    public function we(){
+    public function     we(){
         $News = D('News');
         $id = I('get.id', 0, 'intval');
         $info = $News->getWeInfo($id);
