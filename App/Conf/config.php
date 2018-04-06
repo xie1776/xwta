@@ -46,8 +46,8 @@ return array(
     ),
 
     //分组设置
-    'APP_GROUP_LIST' => 'Home,Admin,Lottery,Api,Mall,Touch,Crod', //项目分组设定
-    'DEFAULT_GROUP'  => 'Home', //默认分组
+    'APP_GROUP_LIST' => 'Home,Admin,Lottery,Api,Mall,Touch,Crod,Index', //项目分组设定
+    'DEFAULT_GROUP'  => 'Index', //默认分组
     'URL_MODEL' => 2, //分组模式
 
     'SITE_INFO' => array ( 

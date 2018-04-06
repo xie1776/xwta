@@ -36,7 +36,7 @@
 			$req->setEndTkRate("5");
 			// $req->setPlatform("1");
 			// $req->setPageNo("123");
-			$req->setPageSize("1");
+			$req->setPageSize("10");
 			$resp = $c->execute($req);
 			$resp = json_encode($resp);
 
@@ -56,7 +56,7 @@
 			$c = new TopClient;
 			$c->appkey = $this->appkey;
 			$c->secretKey = $this->secret;
-			include APP_PATH."/Lib/Libs/taobao_sdk/top/request/TbkItemsConvertRequest.php";
+			include APP_PATH."/Lib/Libs/taobao_sdk/top/request/TbkItemConvertRequest.php";
 			$req = new TbkItemConvertRequest;
 			$req->setFields("num_iid,click_url");
 			$req->setNumIids("556598911988");
