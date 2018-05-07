@@ -163,7 +163,7 @@
 		public function getList($where=array(),$p=1,$rows=20){
 			import('ORG.Util.Page');
 			$count = $this->where($where)->count();
-			$page = new Page($count,$rows);
+			$page = new Page($count,$rows,'','home/index/index/');
 			$data = array();
 			$data['list'] = $this->where($where)->page($p,$rows)->order('id desc')->select();
 			$data['page'] = $page->show();
