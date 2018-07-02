@@ -1,5 +1,5 @@
 <?php
-	echo 11;die;
+
 	//ob_start();
 	
 	/**
