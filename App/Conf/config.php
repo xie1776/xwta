@@ -111,14 +111,14 @@ return array(
     'FORBID_FILE' => 'forbid.txt', //记录禁止访问的ip 多个ip以英文逗号分隔
 
     //开启子域名配置
-    // 'APP_SUB_DOMAIN_DEPLOY'=>1, 
-    // 'APP_SUB_DOMAIN_RULES'=>array(
-    //     // 'lottery' => array('Lottery/'),
-    //     'mall' => array('Mall/'),
-    //     // 'admin' => array('Admin/'),
-    //     'api' => array('Api/'),
-    //     'm' => array('Touch/'),
-    //     ),
+    'APP_SUB_DOMAIN_DEPLOY'=>1, 
+    'APP_SUB_DOMAIN_RULES'=>array(
+        // 'lottery' => array('Lottery/'),
+        // 'mall' => array('Mall/'),
+        // 'admin' => array('Admin/'),
+        'dwto' => array('Api/'),
+        // 'm' => array('Touch/'),
+        ),
     'URL_CASE_INSENSITIVE' =>true, //url不区分大小写
 
     'ASSET' => [
