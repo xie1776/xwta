@@ -45,8 +45,11 @@
 <div class="page">{$page}</div>
 <include file="Common:footer" />
 <script>
-function nofind(){ ; 
-    img.src="Public/images/error.png"; 
-    img.onerror=null; 
-} 	
+$(function(){
+	function nofind(){
+	    img.src="Public/images/error.png"; 
+	    img.onerror=null; 
+	} 
+});
+	
 </script>
