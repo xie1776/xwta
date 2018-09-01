@@ -160,10 +160,10 @@
 		 * 获取列表
 		 * @return [type] [description]
 		 */
-		public function getList($where=array(),$p=1,$rows=20){
+		public function getList($where=array(),$p=1,$rows=20, $module='home'){
 			import('ORG.Util.Page');
 			$count = $this->where($where)->count();
-			$page = new Page($count,$rows,'','home/index/index/p/');
+			$page = new Page($count,$rows,'', $module.'/index/index/p/');
 			$data = array();
 			$data['list'] = $this->where($where)->page($p,$rows)->order('id desc')->select();
 			$data['page'] = $page->show();
