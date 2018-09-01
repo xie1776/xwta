@@ -27,6 +27,15 @@
 		#title .title{font-size: 22px;display: inline-block;width: 90%;overflow: hidden;text-align: center;}
 		.title a{color:black;}
 	</style>
+<script>
+$(function(){
+	function nofind(){
+	    img.src="Public/images/error.png"; 
+	    img.onerror=null; 
+	} 
+});
+</script>
+
 <foreach name="list" item="vo">
 	<article>
 	    <div id="title">
@@ -44,12 +53,4 @@
 </foreach>
 <div class="page">{$page}</div>
 <include file="Common:footer" />
-<script>
-$(function(){
-	function nofind(){
-	    img.src="Public/images/error.png"; 
-	    img.onerror=null; 
-	} 
-});
-	
-</script>
+
