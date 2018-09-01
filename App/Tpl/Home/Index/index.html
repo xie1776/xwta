@@ -30,7 +30,7 @@
 <script>
 $(function(){
 	function nofind(){
-	    img.src="Public/images/error.png"; 
+	    img.src="Public/images/404.gif"; 
 	    img.onerror=null; 
 	} 
 });
@@ -46,7 +46,7 @@ $(function(){
 	      <if condition="$vo['type'] eq 1">
 	      	{$vo.content}
 	      <else />
-			<img src="{$vo.picUrl}{$vo.img}" onerror="javascript:this.src='http://www.99meiti.com/Public/images/error.png';this.onerror = null">
+			<img src="{$vo.picUrl}{$vo.img}" onerror="javascript:this.src='http://www.99meiti.com/Public/images/404.gif';this.onerror = null">
 		</if>
 	  </div>
 	</article>
