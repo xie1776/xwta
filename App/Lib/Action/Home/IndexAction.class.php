@@ -37,7 +37,7 @@ class IndexAction extends HomeAction {
      * 显示视频
      * @return [type] [description]
      */
-    public function     we(){
+    public function we(){
         $News = D('News');
         $id = I('get.id', 0, 'intval');
         $info = $News->getWeInfo($id);

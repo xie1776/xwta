@@ -187,7 +187,7 @@
                     'type' => JokeModel::TYPE_IMG,
                     );
                 $joke = D('Joke')->where($where)->order('rand()')->find();
-                $result_img = sprintf($imgTpl, $fromUsername, $toUsername, $time, $joke['title'], $joke['title'], $joke['img'], 'http://dwto.99meiti.com/Joke/detail/id/'.$joke['id']);
+                $result_img = sprintf($imgTpl, $fromUsername, $toUsername, $time, $joke['title'], $joke['title'], $joke['img'], 'http://www.99meiti.com/Joke/detail/id/'.$joke['id']);
                 echo $result_img;exit;
             }
             //处理评论
@@ -208,7 +208,7 @@
             else if((strpos($keyword,'美女')!==false) || $keyword==2)
             {
                 $looker = D('Looker')->order('rand()')->find();
-                $result_img = sprintf($imgTpl, $fromUsername, $toUsername, $time, $looker['title'], $looker['title'], $looker['picUrl'], 'http://dwto.99meiti.com/Joke/lookerDetail/id/'.$looker['id']);
+                $result_img = sprintf($imgTpl, $fromUsername, $toUsername, $time, $looker['title'], $looker['title'], $looker['picUrl'], 'http://www.99meiti.com/Joke/lookerDetail/id/'.$looker['id']);
                 //$result_img = sprintf($only_imgTpl, $fromUsername, $toUsername, $time, 'http://m.laijiemi.cn/index.php/Looker/detail/id/'.$looker['id'],'1234567890123456');
                 echo $result_img;die;
             }
@@ -259,7 +259,7 @@
         switch ($object->Event)
         {
             case "subscribe":
-                $contentStr = "感谢您关注【来揭秘】"."\n"."微信号：laijiemi01"."\n"."目前平台功能如下："."\n"."1、查天气，如输入：北京天气"."\n"."2、揭秘，输入：揭秘或3"."\n"."3、搞笑图片,输入：搞笑或1"."\n"."4、美女图片，输入：美女或2";
+                $contentStr = "感谢您关注【天天看cn】"."\n"."微信号：ttkancn"."\n"."目前平台功能如下："."\n"."1、查天气，如输入：北京天气"."\n"."2、揭秘，输入：揭秘或3"."\n"."3、搞笑图片,输入：搞笑或1"."\n"."4、美女图片，输入：美女或2";
                 break;
             default :
                 $contentStr = "Unknow Event: ".$object->Event;
