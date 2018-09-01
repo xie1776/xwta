@@ -17,7 +17,7 @@
 				'type' => 1,
 				);
 
-			$data = $Joke->getList($where,$p,20,'admin');
+			$data = $Joke->getList($where,$p,20,'admin/Amusement/word/p/');
 			// dump($data);die;
 			$this->assign('list',$data['list']);
 			$this->assign('page',$data['page']);
