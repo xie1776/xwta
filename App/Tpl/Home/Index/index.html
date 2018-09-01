@@ -37,10 +37,16 @@
 	      <if condition="$vo['type'] eq 1">
 	      	{$vo.content}
 	      <else />
-			<img src="{$vo.picUrl}{$vo.img}">
+			<img src="{$vo.picUrl}{$vo.img}" onerror="nofind(this)">
 		</if>
 	  </div>
 	</article>
 </foreach>
 <div class="page">{$page}</div>
 <include file="Common:footer" />
+<script>
+function nofind(){ ; 
+    img.src="Public/images/error.png"; 
+    img.onerror=null; 
+} 	
+</script>
