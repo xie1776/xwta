@@ -37,10 +37,22 @@
 	      <if condition="$vo['type'] eq 1">
 	      	{$vo.content}
 	      <else />
-			<img src="{$vo.picUrl}{$vo.img}">
+			<img src="{$vo.picUrl}{$vo.img}" onerror="nofind();">
 		</if>
 	  </div>
 	</article>
 </foreach>
 <div class="page">{$page}</div>
 <include file="Common:footer" />
+
+<script type="text/javascript">
+
+function nofind()
+{
+
+	var img=event.srcElement;
+	img.src="http://{$Think.server.HTTP_HOST}/Public/Images/default.jpg";
+	img.onerror=null; //控制不要一直跳动
+}
+
+</script>
