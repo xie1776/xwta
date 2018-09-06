@@ -27,6 +27,15 @@
 		#title .title{font-size: 22px;display: inline-block;width: 90%;overflow: hidden;text-align: center;}
 		.title a{color:black;}
 	</style>
+<script>
+$(function(){
+	function nofind(){
+	    img.src="Public/images/404.gif"; 
+	    img.onerror=null; 
+	} 
+});
+</script>
+
 <foreach name="list" item="vo">
 	<article>
 	    <div id="title">
@@ -49,7 +58,6 @@
 
 function nofind()
 {
-
 	var img=event.srcElement;
 	img.src="http://{$Think.server.HTTP_HOST}/Public/Images/default.jpg";
 	img.onerror=null; //控制不要一直跳动

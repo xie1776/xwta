@@ -50,7 +50,7 @@ class PublicAction extends BaseAction {
             echo json_encode($returnLoginInfo);
         } else {
             if (isset($_COOKIE[$this->loginMarked])) {
-                $this->redirect("/admin/Index/index");
+                $this->redirect("admin/Index/index");
             }
 
             //$systemConfig = include WEB_ROOT . 'Common/systemConfig.php';

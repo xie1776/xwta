@@ -17,7 +17,7 @@
 				'type' => 1,
 				);
 
-			$data = $Joke->getList($where,$p);
+			$data = $Joke->getList($where,$p,20,'admin/Amusement/word/p/');
 			// dump($data);die;
 			$this->assign('list',$data['list']);
 			$this->assign('page',$data['page']);
@@ -36,7 +36,7 @@
 				'type' => 2,
 				);
 
-			$data = $Joke->getList($where,$p);
+			$data = $Joke->getList($where,$p, 20, 'admin/Amusement/joke/p/');
 			// dump($data);die;
 			$this->assign('list',$data['list']);
 			$this->assign('page',$data['page']);
@@ -112,7 +112,27 @@
 			}
 		}
 
+		/**
+		 * 删除功能
+		 * @Author   zhibin
+		 * @DateTime 2018-09-01
+		 * @return   [type]     [description]
+		 */
+		public function deljoke()
+		{
+			$id = I('get.id', 0, 'intval');
+			$info = D('Joke')->where(array('id'=>$id))->find();
+			if(!$info){
+				$this->error('数据未发现');die;
+			}
 
+			$res = D('Joke')->where(array('id'=>$id))->delete();
+			if ($res) {
+				$this->success('删除成功');
+			} else {
+				$this->success('删除失败');
+			}
+		}
 		
 
 	}

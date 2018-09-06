@@ -39,7 +39,7 @@
                                 <td>{$vo.ct}</td>
                                 <td>{$vo.source}</td>
                                 <td>{$vo.add_time|date="Y-m-d H:i:s",###}</td>
-                                <td>[ <a href="__URL__/edit?id={$vo.id}">编辑 </a> ] [ <a link="#" href="javascript:void(0)" name="{$vo.title}" class="del">删除 </a> ]</td>
+                                <td>[ <a href="__URL__/edit?id={$vo.id}">编辑 </a> ] [ <a link="__URL__/deljoke?id={$vo.id}" href="javascript:void(0)" name="{$vo.title}" class="del">删除 </a> ]</td>
                             </tr>
                         </volist>
                         <tr><td colspan="6" class="page">{$page}</td></tr>
