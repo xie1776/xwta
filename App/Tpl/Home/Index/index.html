@@ -1,4 +1,4 @@
-<!-- <include file="Common:header" />
+<include file="Common:header" />
 	<style>
 		.page{text-align: center;height: 30px;margin: 8px 0 90px 0;font-size: 12px;}
 		.page a {
@@ -26,7 +26,7 @@
 		.entry img{margin-right: auto;margin-left: auto;}
 		#title .title{font-size: 22px;display: inline-block;width: 90%;overflow: hidden;text-align: center;}
 		.title a{color:black;}
-	</style> -->
+	</style>
 <script>
 $(function(){
 	function nofind(){
@@ -46,7 +46,7 @@ $(function(){
 	      <if condition="$vo['type'] eq 1">
 	      	{$vo.content}
 	      <else />
-			<img src="{$vo.picUrl}{$vo.img}" onerror="javascript:this.src='http://www.99meiti.com/Public/images/404.gif';this.onerror = null">
+			<img src="{$vo.picUrl}{$vo.img}" onerror="nofind();">
 		</if>
 	  </div>
 	</article>
@@ -66,3 +66,15 @@ var _hmt = _hmt || [];
 })();
 </script>
 <!-- 百度统计 -->
+
+<script type="text/javascript">
+
+function nofind()
+{
+	var img=event.srcElement;
+	img.src="http://{$Think.server.HTTP_HOST}/Public/Images/default.jpg";
+	img.onerror=null; //控制不要一直跳动
+}
+
+</script>
+
