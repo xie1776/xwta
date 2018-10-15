@@ -154,7 +154,8 @@
 		 * 手动添加数据
 		 * @return [type] [description]
 		 */
-		public function addate(){
+		public function addate()
+		{
 			if(IS_POST){
 				$sn = I('post.sn','');
 				$lottery = I('post.lottery','');
@@ -187,7 +188,7 @@
 				}
 				$this->error('发布失败');die;
 			}
-			$this->display('Index/add');
+			$this->display('add');
 		}
 
 
