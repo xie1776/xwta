@@ -50,9 +50,9 @@
 	     * @version 2017-02-23
 	     */
 	    public function addNew($data=array()){
-	    	$time = strtotime($data['time']);
+	    	$time = strtotime($data['opentime']);
 	    	$week = date('w',$time);
-	    	$lo = explode('+', $data['openCode']);
+	    	$lo = explode('+', $data['opencode']);
 	    	$red = explode(',', $lo[0]);
 	    	$newdata = array(
 	    		'sn' => $data['expect'],
@@ -79,5 +79,24 @@
 	    	$ball = $this->order('id desc')->limit(1)->find();
 	    	return $ball;
 	    }
+
+	    /**
+	     * 另外的接口
+	     * @Author   zhibin
+	     * @DateTime 2018-10-15
+	     * @return   [type]     [description]
+	     */
+	    public function apiplus()
+	    {	
+	    	$url = 'http://f.apiplus.net/ssq-20.json';
+	    	$result = file_get_contents($url);
+		    $result = json_decode($result,true);
+		    // pre($result);die;
+		    
+		    $data = $result['data'];
+		    $data = array_reverse($data);
+		    // pre($data);die;
+		    return $data;
+	    }	
 	}
 ?>

@@ -23,8 +23,8 @@
 			</foreach>
 		</select>
 		<input type="submit" value="查询"/>
-		<a href="{:U('Index/index',array('sn'=>$pre_sn))}">上一期</a> <if condition="$next neq false">| <a href="{:U('Index/index',array('sn'=>$next['sn']))}">下一期</a></if>
-		| <a href="{:U('Trend/update')}" target="_bank">更新</a>
+		<a href="{:U('Trend/index',array('sn'=>$pre_sn))}">上一期</a> <if condition="$next neq false">| <a href="{:U('Trend/index',array('sn'=>$next['sn']))}">下一期</a></if>
+		| <a href="{:U('Trend/upLottery')}" target="_bank">更新</a>
 	</form>
 	<div class="cur_sn">
 		{$info.sn} : <span style="color:red;">{$info.r_one},{$info.r_two},{$info.r_three},{$info.r_four},{$info.r_five},{$info.r_six}</span> + <span style="color:blue">{$info.blue}</span>
