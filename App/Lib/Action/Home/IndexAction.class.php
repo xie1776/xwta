@@ -31,7 +31,7 @@ class IndexAction extends HomeAction {
         $this->assign('title','_'.$webInfo['title']);
         $this->assign('list',$data['list']);
         $this->assign('page',$data['page']);
-        $this->display();
+        $this->display('index');
     }
     /**
      * 显示视频
@@ -61,7 +61,7 @@ class IndexAction extends HomeAction {
         send_mail("zhibin3@qq.com", "zhibin.xie", "测试邮箱", "测试邮件是否能正常发送");
     }
 
-    public function weList()
+    public function welist()
     {
         $p = I('get.p',1,'intval');
         $News = D('News');

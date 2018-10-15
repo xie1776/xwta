@@ -94,8 +94,8 @@
 		public function getList($where=array(),$rows=20){
 			
 			import('ORG.Util.Page');
-	        $count = $this->where($where)->count();
-	        $page = new Page($count,$rows);
+	        		$count = $this->where($where)->count();
+	        		$page = new Page($count,$rows);
 
 			$field = 'o.*,m.username,b.r_one,b.r_two,b.r_three,b.r_four,b.r_five,b.r_six,b.blue';
 			$list = M()->table('pa_ball_order o')->join('pa_member m on m.uid=o.user_id')->join('pa_ball b on b.sn=o.issue')->field($field)->where($where)->order('o.id desc')->limit($page->firstRow,$rows)->select();

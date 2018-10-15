@@ -2,9 +2,9 @@
 
     if(PRODUCT != 1){ //测试环境
         $passwd = 'root';
-        $trace_show = true;
-        $error_msg = true;
-        $trace_exce = true;
+        $trace_show = false;
+        $error_msg = false;
+        $trace_exce = false;
         $token_on = false;
         $asset_path = 'D:/360/';
     }else{ //线上
@@ -18,7 +18,7 @@
 
 return array(
     /* 数据库设置 */
-    'DB_DSN'=>'mysql://root:'.$passwd.'@127.0.0.1:3306/xwta',
+    'DB_DSN'=>'mysql://root:'.$passwd.'@127.0.0.1/xwta',
 
     /*
     //改用线上数据
@@ -46,7 +46,7 @@ return array(
     ),
 
     //分组设置
-    'APP_GROUP_LIST' => 'Home,Admin,Lottery,Api,Mall,Touch,Crod', //项目分组设定
+    'APP_GROUP_LIST' => 'Home,Admin,Lottery,Api,Mall,Touch,Crod,Index', //项目分组设定
     'DEFAULT_GROUP'  => 'Home', //默认分组
     'URL_MODEL' => 2, //分组模式
 
@@ -113,17 +113,27 @@ return array(
     //开启子域名配置
     'APP_SUB_DOMAIN_DEPLOY'=>1, 
     'APP_SUB_DOMAIN_RULES'=>array(
-        'lottery' => array('Lottery/'),
-        'mall' => array('Mall/'),
-        'admin' => array('Admin/'),
-        'api' => array('Api/'),
-        'm' => array('Touch/'),
+        // 'lottery' => array('Lottery/'),
+        // 'mall' => array('Mall/'),
+        // 'admin' => array('Admin/'),
+        'dwto' => array('Api/'),
+        // 'm' => array('Touch/'),
         ),
     'URL_CASE_INSENSITIVE' =>true, //url不区分大小写
 
     'ASSET' => [
         'path' => $asset_path,
         'domain' => 'http://asset.xwta.net/',
+    ],
+
+    'CHAT' => [
+        'server' => '192.168.33.10',
+        'port' => '8032',
+    ],
+
+    'REDIS' => [
+        'server' => '127.0.0.1', //192.168.33.10
+        'port' => 6379,
     ],
 
 );

@@ -1025,12 +1025,12 @@
 		<table style="border-collapse:separate; border-spacing:0px 10px;">
 			<tr><th>用户: </th><td>{$userInfo.username}</td></tr>
 			<tr><th>积分: </th><td class="integral">{$userInfo.balance}</td></tr>
-			<tr><th></th><td><a href="{:U('User/logout')}">点击退出</a> | <a href="{:U('User/userCenter')}">投注列表</a></td></tr>
+			<tr><th></th><td><a href="{:U('/lottery/User/logout')}">点击退出</a> | <a href="{:U('/lottery/User/userCenter')}">投注列表</a></td></tr>
 		</table>
 	<else/>
 		<h3><a href="javascript:loginReg(1);">登陆</a> | 
 		<a href="javascript:loginReg(2);" title="点击切换">注册</a></h3>
-		<form action="{:U('User/login')}" method="post" id="loginForm">
+		<form action="{:U('/lottery/User/login')}" method="post" id="loginForm">
 		<table class="home_login" style="border-collapse:separate; border-spacing:0px 10px;">
 			<tr><th>用户: </th><td><input type="text" name="user" class="input"></td></tr>
 			<tr><th>密码: </th><td><input type="password" name="pass" class="input"></td></tr>
@@ -1323,7 +1323,7 @@ window.Core.initGroupData = {
 		});
 		var times = $("#bet_times").val();
 		$.ajax({
-			url:'/BallOrder/order',
+			url:'/lottery/BallOrder/order',
 			type:'post',
 			data:data+"&bet_times="+times,
 			dataType:'json',
@@ -1342,11 +1342,11 @@ window.Core.initGroupData = {
 		if(val == 1){
 			$(".home_login").css({"display":"block"});
 			$(".home_reg").css({"display":"none"});
-			$("#loginForm").attr("action", "{:U('User/login')}");
+			$("#loginForm").attr("action", "{:U('/lottery/User/login')}");
 		}else{
 			$(".home_login").css({"display":"none"});
 			$(".home_reg").css({"display":"block"});
-			$("#loginForm").attr("action", "{:U('User/reg')}");
+			$("#loginForm").attr("action", "{:U('/lottery/User/reg')}");
 		}
 	}
 </script>

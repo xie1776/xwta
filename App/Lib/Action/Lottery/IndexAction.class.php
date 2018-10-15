@@ -31,14 +31,14 @@
 			$this->assign('lot',$lot);
 			$this->assign('userInfo',$this->userInfo);
 			$this->assign('issue',$issue);
-			$this->display();
+			$this->display('index');
 		}
 
 		public function indexV2(){
 			if(IS_POST){
 				$this->success('投注成功','index2');die;
 			}
-			$this->display();
+			$this->display('index2');
 		}
 
 	}

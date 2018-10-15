@@ -9,17 +9,17 @@ class AccessAction extends CommonAction {
      */
     public function index() {
         $this->assign("list", D("Access")->adminList());
-        $this->display();
+        $this->display('index');
     }
 
     public function nodeList() {
         $this->assign("list", D("Access")->nodeList());
-        $this->display();
+        $this->display('nodeList');
     }
 
     public function roleList() {
         $this->assign("list", D("Access")->roleList());
-        $this->display();
+        $this->display('roleList');
     }
 
     public function addRole() {
@@ -45,7 +45,7 @@ class AccessAction extends CommonAction {
                 $this->error("不存在该角色", U('Access/roleList'));
             }
             $this->assign("info", $this->getRole($info));
-            $this->display();
+            $this->display('editRole');
         }
     }
 
@@ -83,7 +83,7 @@ class AccessAction extends CommonAction {
                 $this->error("不存在该节点", U('Access/nodeList'));
             }
             $this->assign("info", $this->getPid($info));
-            $this->display();
+            $this->display('editNode');
         }
     }
 
@@ -110,7 +110,7 @@ class AccessAction extends CommonAction {
             echo json_encode(D("Access")->addAdmin());
         } else {
             $this->assign("info", $this->getRoleListOption(array('role_id' => 0)));
-            $this->display();
+            $this->display('addAdmin');
         }
     }
 
@@ -140,7 +140,7 @@ class AccessAction extends CommonAction {
                 }
             }
             $this->assign("nodeList", $datas);
-            $this->display();
+            $this->display('changeRole');
         }
     }
 

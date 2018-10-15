@@ -1,9 +1,21 @@
 <?php
-	
+
 	//ob_start();
+	
+	/**
+	 * php cli执行
+	 * php index.php -c 控制器(Index) -a 方法名(index)
+	 */
+	if (php_sapi_name()=='cli') {
+		$param = getopt('c:a:');
+		$controller = $param['c'];
+		$action = $param['a'];
+		$_GET['s'] = $controller.'/'.$action;
+	}
 
 	ini_set('date.timezone', 'Asia/Shanghai');
 
+	!isset($_SERVER['product']) && $_SERVER['product'] = 0;
 	define('PRODUCT',$_SERVER['product']);//设置本地还是线上环境
 
 	define('APP_NAME', 'App');

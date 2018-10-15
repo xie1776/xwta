@@ -47,7 +47,7 @@
 				$res = $model->signUp($data);
 				if($res){
 					$this->userInfo = $res;
-					$this->success('注册成功',U('Index/index'));die;
+					$this->success('注册成功',U('/lottery/Index/index'));die;
 				}
 				$this->error('注册失败');die;
 
@@ -75,7 +75,7 @@
 				$user = $model->login($username,$password); //var_dump($user);die;
 				if($user){
 					$this->userInfo = $user;
-					$this->success('登录成功',U('Index/index'));
+					$this->success('登录成功',U('/lottery/Index/index'));
 				}else{
 					$this->error('登录失败');
 				}
@@ -102,7 +102,7 @@
 		public function logout(){
 			session('isLogin',0);
 			$this->user = '';
-			$this->success('退出成功',U('Index/index'));
+			$this->success('退出成功',U('/lottery/Index/index'));
 		}
 		
 		/**
@@ -127,7 +127,7 @@
 		 */
 		private function _checkouIsLogin(){
 			if(session('isLogin') && $this->userInfo){ //检测是否已经登录
-				$this->redirect('Index/index');
+				$this->redirect('/lottery/Index/index');
 			}
 		}
 		/**
@@ -163,9 +163,9 @@
 				$this->assign('list',$list['list']);
 				$this->assign('page',$list['page']);
 
-				$this->display();
+				$this->display('userCenter');
 			}else{
-				$this->redirect('Index/index'); //跳转到首页
+				$this->redirect('/lottery/Index/index'); //跳转到首页
 			}
 		}
 

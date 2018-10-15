@@ -5,7 +5,7 @@
  * @author auto create
  * @since 1.0, 2014-04-09 17:23:20
  */
-class TbkItemsConvertRequest
+class TbkItemConvertRequest
 {
 	/** 
 	 * 需返回的字段列表.可选值:click_url
@@ -123,7 +123,7 @@ class TbkItemsConvertRequest
 
 	public function getApiMethodName()
 	{
-		return "taobao.tbk.items.convert";
+		return "taobao.tbk.item.convert";
 	}
 	
 	public function getApiParas()
@@ -143,4 +143,17 @@ class TbkItemsConvertRequest
 		$this->apiParas[$key] = $value;
 		$this->$key = $value;
 	}
+	
+	public function setAdzoneId($adzoneId)
+	{
+		$this->adzoneId = $adzoneId;
+		$this->apiParas["adzone_id"] = $adzoneId;
+	}
+
+	public function setPlatform($platform)
+	{
+		$this->platform = $platform;
+		$this->apiParas["platform"] = $platform;
+	}
+
 }

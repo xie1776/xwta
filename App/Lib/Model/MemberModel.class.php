@@ -51,6 +51,7 @@
 				'username' => $username,
 				'pwd' => encrypt($pwd),
 				);
+			// pre($where);die;
 			$info = $this->where($where)->find();//var_dump($info);die;
 			if(!$info){
 				return false;

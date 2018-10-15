@@ -38,7 +38,7 @@ class IndexAction extends CommonAction {
             $this->checkToken();
             echo json_encode(D("Index")->my_info($_POST));
         } else {
-            $this->display();
+            $this->display('myInfo');
         }
     }
 
