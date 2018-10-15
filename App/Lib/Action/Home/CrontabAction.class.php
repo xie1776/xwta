@@ -60,38 +60,7 @@
 				echo date('Y-m-d H:i')."\n";
 			}
 		}
-		/**
-		 * 定时任务更新开奖数据
-		 * @Author   zhibin
-		 * @DateTime 2017-09-05
-		 * @return   [type]     [description]
-		 */
-		public function upLottery(){
-			set_time_limit(180);
-			$Ball = D('Ball');
-			$sn = $Ball->order('id desc')->limit(1)->getField('sn');
-			for ($i=$sn+1; $i < 2020153; $i++) { 
 
-				$result = $Ball->addByApi($i);
-				//dump($result);die;
-				if($result['showapi_res_body']['result']){
-			    	$Ball->addNew($result['showapi_res_body']['result']);
-			    }else{
-			    	$after = substr($i, -3);
-			    	$front = substr($i,0,4);
-			    	if($after=='153' || $after=='154' || $after=='152'){
-			    		//echo $after.'-'.$front;die;
-			    		$i = ($front+1).'000';
-			    	}else{
-			    		// die('exit');
-			    		echo date('Y-m-d H:i:s')."\n";
-			    		die;
-			    	}
-			    }
-			    //die;
-			    sleep(1);
-			}
-		}
 		/**
 		 * 定时生成sitemap
 		 * @Author   zhibin

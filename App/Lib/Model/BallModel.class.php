@@ -19,7 +19,7 @@
 		    );
 		    $param = $this->_createParam($paramArr,$showapi_secret);
 		    $url = 'http://route.showapi.com/44-3?'.$param; 
-		  
+		    // echo $url;die;
 		    $result = file_get_contents($url);
 
 		    $result = json_decode($result,true);
