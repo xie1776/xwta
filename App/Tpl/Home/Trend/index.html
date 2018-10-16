@@ -13,6 +13,32 @@
 		.one{width: 80%;margin:0 auto 10px auto;border:1px solid #ccc;border-radius: 5px;padding: 8px;}
 		.clear{clear: both;}
 		.red{color:red;}
+		/* 双色球红色 */
+.redball{
+	width:25px;
+	height:25px;
+	margin: 30px auto;
+	border: 2px solid #e4007e;
+	text-align: center;
+	line-height: 25px;
+	font-weight: bold;
+	font-size: 14px;
+	background: red;
+	border-radius: 50%;
+}
+/* 双色球蓝色 */
+.blueball{
+	width:25px;
+	height:25px;
+	margin: 30px auto;
+	border: 2px solid blue;
+	text-align: center;
+	line-height: 25px;
+	font-weight: bold;
+	font-size: 14px;
+	background: blue;
+	border-radius: 50%;
+}
 	</style>
 </head>
 <body>
@@ -41,7 +67,7 @@
 			红1球
 			<ul>
 				<foreach name="one.r_one" item="v1" key="k1">
-					<li <if condition="$next['r_one'] eq $k1">class="red"</if>>【{$k1}】 出现次数{$v1} , <?php echo sprintf('%.2f',($v1/$one['count'])*100);?>%</li>
+					<li <if condition="$next['r_one'] eq $k1">class="red"</if>><span class="redball">{$k1}</span> 出现次数{$v1} , <?php echo sprintf('%.2f',($v1/$one['count'])*100);?>%</li>
 				</foreach>
 			</ul>
 		</div>
@@ -50,7 +76,7 @@
 			红2球
 			<ul>
 				<foreach name="one.r_two" item="v2" key="k2">
-					<li <if condition="$next['r_two'] eq $k2">class="red"</if>>【{$k2}】 出现次数{$v2}</li>
+					<li <if condition="$next['r_two'] eq $k2">class="red"</if>><span class="redball">{$k2}</span> 出现次数{$v2}</li>
 				</foreach>
 			</ul>
 		</div>
@@ -63,7 +89,7 @@
 			红6球
 			<ul>
 				<foreach name="six.r_six" item="v6" key="k6">
-					<li <if condition="$next['r_six'] eq $k6">class="red"</if>>【{$k6}】 出现次数{$v6}, <?php echo sprintf('%.2f',($v6/$six['count'])*100);?>%</li>
+					<li <if condition="$next['r_six'] eq $k6">class="red"</if>><span class="redball">{$k6}</span> 出现次数{$v6}, <?php echo sprintf('%.2f',($v6/$six['count'])*100);?>%</li>
 				</foreach>
 			</ul>
 		</div>
@@ -72,7 +98,7 @@
 			红5球
 			<ul>
 				<foreach name="six.r_five" item="v5" key="k5">
-					<li <if condition="$next['r_five'] eq $k5">class="red"</if>>【{$k5}】 出现次数{$v5}</li>
+					<li <if condition="$next['r_five'] eq $k5">class="red"</if>><span class="redball">{$k5}</span> 出现次数{$v5}</li>
 				</foreach>
 			</ul>
 		</div>
@@ -85,7 +111,7 @@
 		<div class="r_left">
 		<ul>
 			<foreach name="blue.list" item="v" key="k">
-				<li <if condition="$next['blue'] eq $k">class="red"</if>>【{$k}】 出现次数{$v}, <?php echo sprintf('%.2f',($v/$blue['count'])*100).'%';?></li>
+				<li <if condition="$next['blue'] eq $k">class="red"</if>><span class="blueball">{$k}</span> 出现次数{$v}, <?php echo sprintf('%.2f',($v/$blue['count'])*100).'%';?></li>
 			</foreach>
 		</ul>
 		</div>
