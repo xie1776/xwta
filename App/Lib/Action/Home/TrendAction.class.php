@@ -249,7 +249,10 @@ class TrendAction extends BaseAction
 	{
 		$one = I('param.r_one','','intval');
 		$Ball = D('Ball');
-		$one_serial = $Ball->statOne($one);
+		$series = $Ball->statOne($one);
+
+		$this->assign('series', $series);
+		$this->display('series');
 	}
 
 }

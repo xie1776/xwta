@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>分析</title>
+	<style>
+		*{padding: 0;margin: 0;}
+		ul{list-style-type:decimal;}
+		ul li{width: 220px;text-align: left;}
+		.cur_sn{width: 80%;height: 60px;border:1px solid #ccc;border-radius: 5px;margin:50px auto 10px auto;text-align: left;line-height: 60px;padding-left:20px; }
+		.r_left{float: left;margin-left: 60px;text-align: center; }
+		.r_right{float: right;margin-right: 60px;text-align: center; }
+		.one{width: 80%;margin:0 auto 10px auto;border:1px solid #ccc;border-radius: 5px;padding: 8px;}
+		.clear{clear: both;}
+		.red{color:red;}
+		/* 双色球红色 */
+.redball{
+	display: inline-block;
+	width:25px;
+	height:25px;
+	margin: 3px auto;
+	border: 2px solid #e4007e;
+	text-align: center;
+	line-height: 25px;
+	font-weight: bold;
+	font-size: 14px;
+	background: #FFECEC;
+	border-radius: 50%;
+}
+/* 双色球蓝色 */
+.blueball{
+	display: inline-block;
+	width:25px;
+	height:25px;
+	margin: 3px auto;
+	border: 2px solid blue;
+	text-align: center;
+	line-height: 25px;
+	font-weight: bold;
+	font-size: 14px;
+	background: #9393FF;
+	border-radius: 50%;
+}
+	</style>
+</head>
+<body>
+
+	<div class="cur_sn">
+		{$info.sn} : <span style="color:red;">{$info.r_one},{$info.r_two},{$info.r_three},{$info.r_four},{$info.r_five},{$info.r_six}</span> + <span style="color:blue">{$info.blue}</span>
+		
+		<if condition="$next neq false">
+		{$next.sn} : <span style="color:red;">{$next.r_one},{$next.r_two},{$next.r_three},{$next.r_four},{$next.r_five},{$next.r_six}</span> + <span style="color:blue">{$next.blue}</span>
+		</if>
+	</div>
+	<div class="one">
+		红1球分析: <br />
+		总次数: {$one.count}
+
+		<div class="r_left">
+			红1球
+			<ul>
+				<foreach name="one.r_one" item="v1" key="k1">
+					<li <if condition="$next['r_one'] eq $k1">class="red"</if>><span class="redball">{$k1}</span> 出现次数{$v1} , <?php echo sprintf('%.2f',($v1/$one['count'])*100);?>%</li>
+				</foreach>
+			</ul>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+	<div class="one">
+	红6球分析: <br />
+	总次数: {$six.count}
+		<div class="r_left">
+			红6球
+			<ul>
+				<foreach name="six.r_six" item="v6" key="k6">
+					<li <if condition="$next['r_six'] eq $k6">class="red"</if>><span class="redball">{$k6}</span> 出现次数{$v6}, <?php echo sprintf('%.2f',($v6/$six['count'])*100);?>%</li>
+				</foreach>
+			</ul>
+		</div>
+		<div style="clear: both;"></div>
+	</div>
+</body>
+</html>
