@@ -81,6 +81,19 @@
 	    }
 
 	    /**
+	     * 按条件查询一条数据
+	     * @Author zhibin
+	     * @Date   2018-10-19
+	     * @param  array      $map [description]
+	     * @return [type]          [description]
+	     */
+	    public function getOneByMap(array $map=[], $field='*')
+	    {
+	    	$ball = $this->field($field)->where($map)->limit(1)->find();
+	    	return $ball;
+	    }
+
+	    /**
 	     * 另外的接口
 	     * @Author   zhibin
 	     * @DateTime 2018-10-15

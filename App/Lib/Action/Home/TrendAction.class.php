@@ -205,6 +205,10 @@
 		$data = $Ball->apiplus();
 		// pre($data);die;
 		foreach ($data as $key => $val) {
+			$info = $Ball->getOneByMap(['sn'=>$val['expect']]);
+			if ($info) {
+				continue;
+			}
 			$Ball->addNew($val);
 			// sleep(1);
 		}
