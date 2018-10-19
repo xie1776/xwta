@@ -133,7 +133,7 @@
     			// pre($six);die;
     			// echo $this->_sql();die;
     			
-    			$data['two'][$key] = $val['r_two'].'('.$val['count'].')';
+    			$data['two'][$val['r_two']] = $val['count'];
     			foreach ($six as $k => $value) {
     				if (!array_key_exists($value['r_six'], $temp)) {
     					$temp[$value['r_six']] = 1;
@@ -145,11 +145,11 @@
 
     		arsort($temp);
     		foreach ($temp as $kt => $valt) {
-    			$data['six'][] = $kt.'('.$valt.')';
+    			$data['six'][$kt] = $valt;
     		}
     		// rsort($data[$ball]['six']);
 
-	    	pre($data);die;
+	    	// pre($data);die;
 	    	return $data;
 	    }
 	}

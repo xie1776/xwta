@@ -251,7 +251,9 @@ class TrendAction extends BaseAction
 		$Ball = D('Ball');
 		$series = $Ball->statOne($one);
 
-		$this->assign('series', $series);
+		$this->assign('red', $one);
+		$this->assign('two', $series['two']);
+		$this->assign('six', $series['six']);
 		$this->display('series');
 	}
 
