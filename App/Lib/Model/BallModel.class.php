@@ -110,6 +110,47 @@
 		    $data = array_reverse($data);
 		    // pre($data);die;
 		    return $data;
-	    }	
+	    }
+
+	    /**
+	     * 红1球分析
+	     * @Author zhibin
+	     * @Date   2018-10-19
+	     * @param  array      $one [description]
+	     * @return [type]          [description]
+	     */
+	    public function statOne($r_one='')
+	    {
+	    	if (empty($r_one)) {
+	    		return false;
+	    	}
+	    	$data = [];
+
+    		$two = $this->field('r_two,count(r_two) count')->where(['r_one'=>$r_one])->group('r_two')->order('count desc')->select();
+    		$temp = [];
+    		foreach ($two as $key => $val) {
+    			$six = $this->field('r_six,count(r_six) count')->where(['r_one'=>$r_one,'r_two'=>$val['r_two']])->group('r_six')->order('count desc')->select();
+    			// pre($six);die;
+    			// echo $this->_sql();die;
+    			
+    			$data['two'][$key] = $val['r_two'].'('.$val['count'].')';
+    			foreach ($six as $k => $value) {
+    				if (!array_key_exists($value['r_six'], $temp)) {
+    					$temp[$value['r_six']] = 1;
+    				} else {
+    					$temp[$value['r_six']] += 1;
+    				}
+    			}
+    		}
+
+    		arsort($temp);
+    		foreach ($temp as $kt => $valt) {
+    			$data['six'][] = $kt.'('.$valt.')';
+    		}
+    		// rsort($data[$ball]['six']);
+
+	    	pre($data);die;
+	    	return $data;
+	    }
 	}
 ?>
