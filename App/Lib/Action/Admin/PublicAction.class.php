@@ -30,7 +30,7 @@ class PublicAction extends BaseAction {
 
     public function index() {
         if (IS_POST) {
-            $this->checkToken();
+            // $this->checkToken();
             $returnLoginInfo = D("Public")->auth();
             //生成认证条件
             if ($returnLoginInfo['status'] == 1) {
