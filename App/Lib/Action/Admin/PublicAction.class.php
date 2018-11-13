@@ -30,7 +30,7 @@ class PublicAction extends BaseAction {
 
     public function index() {
         if (IS_POST) {
-            $this->checkToken();
+            // $this->checkToken();
             $returnLoginInfo = D("Public")->auth();
             //生成认证条件
             if ($returnLoginInfo['status'] == 1) {
@@ -50,7 +50,7 @@ class PublicAction extends BaseAction {
             echo json_encode($returnLoginInfo);
         } else {
             if (isset($_COOKIE[$this->loginMarked])) {
-                $this->redirect("admin/Index/index");
+                $this->redirect("/admin/index/index");
             }
 
             //$systemConfig = include WEB_ROOT . 'Common/systemConfig.php';

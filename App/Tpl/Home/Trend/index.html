@@ -69,7 +69,7 @@
 			红1球
 			<ul>
 				<foreach name="one.r_one" item="v1" key="k1">
-					<li <if condition="$next['r_one'] eq $k1">class="red"</if>><span class="redball">{$k1}</span> 出现次数{$v1} , <?php echo sprintf('%.2f',($v1/$one['count'])*100);?>%</li>
+					<li <if condition="$next['r_one'] eq $k1">class="red"</if>><span class="redball">{$k1}</span> <a href="/trend/series.html?r_one={$k1}" target="_bank">出现次数{$v1} , <?php echo sprintf('%.2f',($v1/$one['count'])*100);?>%</a></li>
 				</foreach>
 			</ul>
 		</div>
