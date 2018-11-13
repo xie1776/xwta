@@ -7,7 +7,7 @@
 <div id="Tags">
     <div class="userPhoto"><!-- <img src="__PUBLIC__/Admin/Img/userPhoto.jpg" /> --> </div>
     <div class="navArea">
-        <div class="userInfo"><div><a href="#" class="sysSet"><span>&nbsp;</span>系统设置</a> <a href="{:U('Public/logout')}" class="loginOut"><span>&nbsp;</span>退出系统</a></div>欢迎您，{$my_info.email} | <a href="#">个人信息管理</a></div>
+        <div class="userInfo"><div><a href="#" class="sysSet"><span>&nbsp;</span>系统设置</a> <a href="{:U('/admin/Public/logout')}" class="loginOut"><span>&nbsp;</span>退出系统</a></div>欢迎您，{$my_info.email} | <a href="#">个人信息管理</a></div>
         <div class="nav"><font id="today"><php>echo date("Y-m-d H:i:s");</php></font>您的位置：{$currentNav}</div>
     </div>
 </div>
