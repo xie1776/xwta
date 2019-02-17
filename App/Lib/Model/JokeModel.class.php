@@ -43,7 +43,7 @@
          *                   [type] => 2
          *               )
 		 */
-		public function getDataFromApi($maxResult=20)
+		public function getDataFromApi_old($maxResult=20)
 		{
 			set_time_limit(60);
 			$p = 1;
@@ -85,6 +85,40 @@
 			}
 			return true;
 		}
+
+		public function getDataFromApi()
+		{
+			$time = time();
+			//配置您申请的appkey
+			$appkey = 'c0c4cde97ae772f6ce29f742380818cc';
+			//************1.按更新时间查询笑话************
+			$url = "http://japi.juhe.cn/joke/img/list.from";
+			$params = array(
+			      "sort" => "desc",//类型，desc:指定时间之前发布的，asc:指定时间之后发布的
+			      "page" => 1,//当前页数,默认1
+			      "pagesize" => 20,//每次返回条数,默认1,最大20
+			      "time" => $time,//时间戳（10位），如：1418816972
+			      "key" => $appkey,//您申请的key
+			);
+
+			$paramstring = http_build_query($params);
+			$content = juhecurl($url,$paramstring);
+			$result = json_decode($content,true);
+			print_r($result);//die;
+			if ($result['error_code']==0) {
+				$data = [];
+				foreach ($result['result']['data'] as $key => $val) {
+					$data['add_time'] = $time;
+					$data['img'] = $val['url'];
+					$data['title'] = $val['content'];
+					$data['ct'] = $val['updatetime'];
+					$data['type'] = 2;
+					$this->data($data)->add();
+				}
+			}
+			return true;
+		}
+
 		/**
 		 * 搞笑文字
 		 * @param  integer $maxResult [description]
