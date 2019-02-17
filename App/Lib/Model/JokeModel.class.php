@@ -63,7 +63,8 @@
 			$sign = $this->createSign($paramArr);
 			$strParam = $this->createStrParam($paramArr);
 			$strParam .= 'showapi_sign='.$sign;
-			$url = 'http://route.showapi.com/341-2?'.$strParam; 
+			$url = 'http://route.showapi.com/341-2?'.$strParam;
+			// echo $url;die;
 			$result = file_get_contents($url);
 			$result = json_decode($result,true);//var_dump($result);die;
 			if($result['showapi_res_code'] != 0)
@@ -89,7 +90,7 @@
 		 * @param  integer $maxResult [description]
 		 * @return [type]             [description]
 		 */
-		public function getJokeWordApi($maxResult=20)
+		public function getJokeWordApi_old($maxResult=20)
 		{
 			set_time_limit(60);
 			$p = 1;
@@ -128,6 +129,45 @@
 					$data['type'] = $val['type'];
 					$this->data($data)->add();
 					file_put_contents('sql.txt', $this->_sql()."\n");
+				}
+			}
+			return true;
+		}
+
+		/**
+		 * 搞笑文字
+		 * @Author   zhibin
+		 * @DateTime 2019-02-17
+		 * @return   [type]     [description]
+		 */
+		public function getJokeWordApi()
+		{
+			$time = time();
+			//配置您申请的appkey
+			$appkey = 'c0c4cde97ae772f6ce29f742380818cc';
+			//************1.按更新时间查询笑话************
+			$url = "http://japi.juhe.cn/joke/content/list.from";
+			$params = array(
+			      "sort" => "desc",//类型，desc:指定时间之前发布的，asc:指定时间之后发布的
+			      "page" => 1,//当前页数,默认1
+			      "pagesize" => 20,//每次返回条数,默认1,最大20
+			      "time" => $time,//时间戳（10位），如：1418816972
+			      "key" => $appkey,//您申请的key
+			);
+
+			$paramstring = http_build_query($params);
+			$content = juhecurl($url,$paramstring);
+			$result = json_decode($content,true);
+			print_r($result);
+			if ($result['reason']=='Success') {
+				foreach ($result['result']['data'] as $key => $val) {
+					$val['add_time'] = $time;
+					//$val['img'] = $val['img'];
+					$val['content'] = $val['content'];
+					$val['title'] = mb_substr($val['content'], 0, 8, 'UTF-8');
+					$val['ct'] = $val['updatetime'];
+					$val['type'] = 1;
+					$this->data($val)->add();
 				}
 			}
 			return true;
