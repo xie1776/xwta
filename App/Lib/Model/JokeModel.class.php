@@ -158,7 +158,7 @@
 			$paramstring = http_build_query($params);
 			$content = juhecurl($url,$paramstring);
 			$result = json_decode($content,true);
-			print_r($result);
+			// print_r($result);
 			if ($result['reason']=='Success') {
 				foreach ($result['result']['data'] as $key => $val) {
 					$val['add_time'] = $time;
