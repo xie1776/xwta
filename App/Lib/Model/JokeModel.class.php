@@ -104,7 +104,7 @@
 			$paramstring = http_build_query($params);
 			$content = juhecurl($url,$paramstring);
 			$result = json_decode($content,true);
-			print_r($result);//die;
+			// print_r($result);//die;
 			if ($result['error_code']==0) {
 				$data = [];
 				foreach ($result['result']['data'] as $key => $val) {
