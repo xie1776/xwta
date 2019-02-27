@@ -14,7 +14,7 @@
                 '说来就来',
             );
 		public function index(){
-			// $this->valid(); //第一次需要对接口进行验证
+			$this->valid(); //第一次需要对接口进行验证
 			$this->responseMsg(); //消息处理
 		}
 
