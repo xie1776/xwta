@@ -8,7 +8,6 @@
 		private static $appId = 'wx1b51bcbb61f08f94';
 
 		public function _initialize(){
-			$this->_check(); //官方验证
 			$this->checkPower(); //签名验证
 		}
 		//内容过滤
@@ -46,7 +45,7 @@
 		 * @Date   2019-02-27
 		 * @return [type]     [description]
 		 */
-		private function _check()
+		private function checkSignature()
 		{
 			$signature = $_GET["signature"];
 			$timestamp = $_GET["timestamp"];
