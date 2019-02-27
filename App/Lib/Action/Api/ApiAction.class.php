@@ -3,9 +3,13 @@
 
 		CONST SIGN_KEY = 'api.xwta';
 		private $no_need = array('Wechat','Index');
+		private static $encodingAesKey = 'o7aDHxlsldmofGoJTQuFA9nuNlYioDHQoRv4gs7G4u3';
+		const TOKEN = 'ttkan';
+		private static $appId = 'wx1b51bcbb61f08f94';
 
 		public function _initialize(){
-			$this->checkPower(); //签名验证	
+			$this->_check(); //官方验证
+			$this->checkPower(); //签名验证
 		}
 		//内容过滤
 		public function filter_words($content){
@@ -33,6 +37,31 @@
 			}else{
 				echo json_encode(['code'=>0,'data'=>[],'msg'=>'签名错误']);
 				die;
+			}
+		}
+
+		/**
+		 * 官方验证
+		 * @Author zhibin
+		 * @Date   2019-02-27
+		 * @return [type]     [description]
+		 */
+		private function _check()
+		{
+			$signature = $_GET["signature"];
+			$timestamp = $_GET["timestamp"];
+			$nonce = $_GET["nonce"];
+			
+			$token = TOKEN;
+			$tmpArr = array($token, $timestamp, $nonce);
+			sort($tmpArr, SORT_STRING);
+			$tmpStr = implode( $tmpArr );
+			$tmpStr = sha1( $tmpStr );
+
+			if( $tmpStr == $signature ){
+				return true;
+			}else{
+				return false;
 			}
 		}
 	}
