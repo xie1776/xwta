@@ -50,7 +50,7 @@ class PublicAction extends BaseAction {
             echo json_encode($returnLoginInfo);
         } else {
             if (isset($_COOKIE[$this->loginMarked])) {
-                $this->redirect("/admin/index/index");
+                $this->redirect("/admin/Index/index");
             }
 
             //$systemConfig = include WEB_ROOT . 'Common/systemConfig.php';
@@ -67,7 +67,7 @@ class PublicAction extends BaseAction {
             unset($_SESSION);
             session_destroy();
         }
-        $this->redirect("Index/index");
+        $this->redirect("/admin/Index/index");
     }
 
     public function findPwd() {

@@ -37,7 +37,7 @@ class PublicModel extends Model {
                 $shell.= "_" . time();
                 setcookie($loginMarked, "$shell", 0, "/");
                 $_SESSION['my_info'] = $info;
-                return array('status' => 1, 'info' => "登录成功", 'url' => U("Index/index"));
+                return array('status' => 1, 'info' => "登录成功", 'url' => U("/admin/Index/index"));
             } else {
                 return array('status' => 0, 'info' => "账号或密码错误");
             }
